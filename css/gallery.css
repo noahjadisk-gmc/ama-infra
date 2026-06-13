@@ -1,4 +1,3 @@
-/* Gallery — Werk in beeld */
 .gallery {
   display: flex;
   flex-direction: column;
@@ -7,7 +6,7 @@
 
 .gallery__tabs {
   display: flex;
-  gap: 0;
+  gap: var(--space-lg);
   border-bottom: 1px solid var(--soft-line);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -20,11 +19,8 @@
 
 .gallery__tab {
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-md) var(--space-lg);
-  font-size: 0.8125rem;
+  padding: var(--space-sm) 0 var(--space-md);
+  font-size: 0.9375rem;
   font-weight: 500;
   color: var(--steel);
   background: none;
@@ -44,19 +40,6 @@
   border-bottom-color: var(--blue);
 }
 
-.gallery__tab-node {
-  width: 0;
-  height: 5px;
-  background: var(--blue);
-  border-radius: 50%;
-  transition: width var(--transition);
-  flex-shrink: 0;
-}
-
-.gallery__tab.is-active .gallery__tab-node {
-  width: 5px;
-}
-
 .gallery__layout {
   display: grid;
   gap: var(--space-xl);
@@ -64,7 +47,7 @@
 
 @media (min-width: 900px) {
   .gallery__layout {
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: var(--space-2xl);
     align-items: start;
   }
@@ -77,10 +60,9 @@
 }
 
 .gallery__main {
-  position: relative;
-  border: 1px solid var(--soft-line);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  border: 1px solid var(--soft-line);
   background: var(--white);
 }
 
@@ -97,25 +79,11 @@
 }
 
 .gallery__main-caption {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
   padding: var(--space-sm) var(--space-md);
-  border-top: 1px solid var(--soft-line);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
   color: var(--steel);
+  border-top: 1px solid var(--soft-line);
   background: var(--white);
-}
-
-.gallery__main-caption::before {
-  content: "";
-  width: 4px;
-  height: 4px;
-  background: var(--blue);
-  border-radius: 50%;
 }
 
 .gallery__thumbs {
@@ -123,7 +91,6 @@
   gap: var(--space-sm);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 2px;
   scrollbar-width: none;
 }
 
@@ -135,12 +102,11 @@
   flex-shrink: 0;
   width: 5.5rem;
   padding: 0;
-  border: 1px solid var(--soft-line);
+  border: 2px solid transparent;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background: var(--white);
-  transition: border-color var(--transition), opacity var(--transition);
-  opacity: 0.65;
+  opacity: 0.6;
+  transition: opacity var(--transition), border-color var(--transition);
 }
 
 .gallery__thumb:hover {
@@ -158,24 +124,12 @@
   object-fit: cover;
 }
 
-.gallery__content {
-  padding-top: var(--space-xs);
-}
-
-@media (min-width: 900px) {
-  .gallery__content {
-    padding-top: var(--space-md);
-    border-left: 1px solid var(--soft-line);
-    padding-left: var(--space-xl);
-  }
-}
-
 .gallery__content-title {
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--navy);
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   line-height: 1.3;
 }
 
@@ -190,44 +144,21 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
 }
 
 .gallery__bullet {
   display: flex;
   align-items: flex-start;
   gap: var(--space-sm);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--navy);
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 .gallery__bullet-marker {
   flex-shrink: 0;
   width: 0.75rem;
-  height: 1px;
+  height: 2px;
   background: var(--blue);
   margin-top: 0.55em;
-  position: relative;
-}
-
-.gallery__bullet-marker::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: -2px;
-  width: 4px;
-  height: 4px;
-  background: var(--blue);
-  border-radius: 50%;
-}
-
-.gallery__content-meta {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--steel);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--soft-line);
 }

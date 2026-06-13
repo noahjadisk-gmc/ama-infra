@@ -1,24 +1,20 @@
-/**
- * AMA Infra gallery data.
- * Photo paths: images/ama/{category}/{filename}.jpg
- */
 window.AMA_GALLERY = {
   tabs: [
     {
       id: 'aanleg',
       label: 'Aanleg',
       title: 'Aanleg van glasvezeltrajecten',
-      text: 'Bij aanlegwerk draait het om een nette voorbereiding, duidelijke kabelrouting en zorgvuldig uitgevoerd grondwerk. AMA Infra ondersteunt bij het aanleggen van glasvezeltrajecten voor woningen, bedrijfspanden en lokale infrastructuur.',
+      text: 'Werkzaamheden aan glasvezel beginnen met een zorgvuldige voorbereiding, duidelijke kabelrouting en net uitgevoerd grondwerk.',
       bullets: [
-        'Sleufwerk en kabelrouting op locatie',
-        'Aansluiting op bestaande infrastructuur',
+        'Sleufwerk en kabelrouting',
+        'Voorbereiding van trajecten',
+        'Werkzaamheden in straat en omgeving',
       ],
-      meta: 'Amsterdam · Aanleg',
       images: [
         {
           src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
-          alt: 'Lange sleuf voor glasvezelaanleg langs straatwerk in Amsterdam',
-          caption: 'AANLEG / STRAATWERK',
+          alt: 'Glasvezel aanlegwerk in Amsterdam',
+          caption: 'Glasvezel aanleg / Amsterdam en omgeving',
         },
       ],
     },
@@ -26,80 +22,52 @@ window.AMA_GALLERY = {
       id: 'installatie',
       label: 'Installatie',
       title: 'Installatie en huisaansluitingen',
-      text: 'Van straat tot pand wordt de aansluiting zorgvuldig voorbereid en uitgevoerd. AMA Infra helpt met huisaansluitingen, aansluitpunten en technische installatie op locatie.',
+      text: 'Van straat tot pand wordt de aansluiting zorgvuldig voorbereid en uitgevoerd, met aandacht voor nette afwerking.',
       bullets: [
-        'Huisaansluiting van straat tot pand',
-        'Controle en oplevering aansluitpunt',
+        'Aansluiting richting woning of pand',
+        'Kabelhaspel en invoertraject',
+        'Controle van de aansluiting',
       ],
-      meta: 'Amsterdam · Installatie',
       images: [
         {
           src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
-          alt: 'Kabelhaspel en sleuf voor huisaansluiting glasvezel',
-          caption: 'KABELHASPEL / WONING',
+          alt: 'Huisaansluiting glasvezel',
+          caption: 'Huisaansluiting glasvezel',
         },
         {
           src: 'images/ama/installatie/installatie-02-woning-aansluiting.jpg',
-          alt: 'Werkzaamheden voor glasvezel huisaansluiting bij woning',
-          caption: 'HUIS AANSLUITING',
+          alt: 'Glasvezel installatie bij woning',
+          caption: 'Aansluiting richting pand',
         },
       ],
     },
     {
       id: 'kabelschade',
       label: 'Kabelschade oplossen',
-      title: 'Kabelschade en storing oplossen',
-      text: 'Bij kabelschade of storing is snel en precies handelen belangrijk. AMA Infra onderzoekt de situatie, lokaliseert het probleem en werkt gericht aan herstel van de verbinding.',
+      title: 'Kabelschade en storingen',
+      text: 'Bij kabelschade of storing wordt de situatie bekeken, het probleem gelokaliseerd en gericht gewerkt aan herstel.',
       bullets: [
-        'Lokaliseren en herstellen van kabelschade',
-        'Snelle oplossing bij storing of geen signaal',
+        'Kabelschade onderzoeken',
+        'Herstelpunten vrijleggen',
+        'Verbinding controleren',
       ],
-      meta: 'Amsterdam · Herstel',
       images: [
         {
           src: 'images/ama/kabelschade/kabelschade-01-overzicht-straatwerk.jpg',
-          alt: 'Open straatwerk met zichtbare glasvezelkabels voor kabelschade herstel',
-          caption: 'KABELSCHADE / OVERZICHT',
+          alt: 'Kabelschade herstelwerkzaamheden',
+          caption: 'Kabelschade overzicht',
         },
         {
           src: 'images/ama/kabelschade/kabelschade-02-open-sleuf-aansluitboxen.jpg',
-          alt: 'Open sleuf met glasvezel aansluitboxen en oranje kabels',
-          caption: 'AANSLUITBOX / SLEUF',
+          alt: 'Open sleuf met aansluitboxen',
+          caption: 'Open sleuf / aansluitboxen',
         },
         {
           src: 'images/ama/kabelschade/kabelschade-03-detail-oranje-kabels.jpg',
-          alt: 'Detail van oranje glasvezelkabels en herstelpunten in open grond',
-          caption: 'KABELSCHADE / HERSTEL',
+          alt: 'Detail kabelschade herstel',
+          caption: 'Detail oranje kabels',
         },
       ],
-    },
-  ],
-};
-
-window.AMA_HERO = {
-  main: {
-    src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
-    alt: 'Glasvezel aanleg en sleufwerk in Amsterdam',
-    caption: 'GLASVEZEL / AMSTERDAM',
-  },
-  strip: [
-    {
-      src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
-      alt: 'Aanleg glasvezel sleuf',
-      label: 'Aanleg',
-      tab: 'aanleg',
-    },
-    {
-      src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
-      alt: 'Huisaansluiting installatie',
-      label: 'Installatie',
-      tab: 'installatie',
-    },
-    {
-      src: 'images/ama/kabelschade/kabelschade-03-detail-oranje-kabels.jpg',
-      alt: 'Kabelschade herstel',
-      label: 'Herstel',
-      tab: 'kabelschade',
     },
   ],
 };

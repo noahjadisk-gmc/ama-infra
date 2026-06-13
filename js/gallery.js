@@ -15,7 +15,6 @@
     var titleEl = root.querySelector('.gallery__content-title');
     var textEl = root.querySelector('.gallery__content-text');
     var bulletsEl = root.querySelector('.gallery__content-bullets');
-    var metaEl = root.querySelector('.gallery__content-meta');
     var thumbsEl = root.querySelector('.gallery__thumbs');
 
     function renderTabs() {
@@ -31,7 +30,6 @@
             '" data-index="' +
             i +
             '">' +
-            '<span class="gallery__tab-node" aria-hidden="true"></span>' +
             tab.label +
             '</button>'
           );
@@ -80,7 +78,6 @@
 
       titleEl.textContent = tab.title;
       textEl.textContent = tab.text;
-      metaEl.textContent = tab.meta;
 
       bulletsEl.innerHTML = tab.bullets
         .map(function (item) {
@@ -117,66 +114,5 @@
     renderContent();
   }
 
-  function initHeroStrip() {
-    var strip = document.querySelector('.hero__strip');
-    if (!strip || !window.AMA_HERO) return;
-
-    strip.innerHTML = window.AMA_HERO.strip
-      .map(function (item) {
-        return (
-          '<a href="#werk" class="hero__strip-item" data-tab="' +
-          item.tab +
-          '">' +
-          '<span class="hero__strip-frame">' +
-          '<img src="' +
-          item.src +
-          '" alt="' +
-          item.alt +
-          '" loading="lazy" width="80" height="60">' +
-          '</span>' +
-          '<span class="hero__strip-label">' +
-          item.label +
-          '</span>' +
-          '</a>'
-        );
-      })
-      .join('');
-
-    strip.addEventListener('click', function (e) {
-      var link = e.target.closest('[data-tab]');
-      if (!link) return;
-      e.preventDefault();
-      window.AMA_PENDING_TAB = link.dataset.tab;
-      var target = document.getElementById('werk');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      window.setTimeout(activatePendingTab, 450);
-    });
-  }
-
-  function activatePendingTab() {
-    if (!window.AMA_PENDING_TAB) return;
-    var tabBtn = document.getElementById('gallery-tab-' + window.AMA_PENDING_TAB);
-    if (tabBtn) {
-      tabBtn.click();
-      window.AMA_PENDING_TAB = null;
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    initGallery();
-    initHeroStrip();
-
-    if (window.location.hash === '#werk') {
-      window.setTimeout(activatePendingTab, 100);
-    }
-
-    window.addEventListener('hashchange', activatePendingTab);
-  });
-
-  window.AMA_activateGalleryTab = function (tabId) {
-    window.AMA_PENDING_TAB = tabId;
-    activatePendingTab();
-  };
+  document.addEventListener('DOMContentLoaded', initGallery);
 })();

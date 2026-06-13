@@ -31,29 +31,4 @@
   window.addEventListener('resize', function () {
     if (window.innerWidth >= 768) closeMenu();
   });
-
-  // Intersection observer for scroll reveals
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const reveals = document.querySelectorAll('.reveal');
-
-    reveals.forEach(function (el) {
-      el.style.opacity = '0';
-    });
-
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '';
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    reveals.forEach(function (el) {
-      observer.observe(el);
-    });
-  }
 })();
