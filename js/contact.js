@@ -87,26 +87,6 @@
       el.hidden = hasPhone();
     });
 
-    document.querySelectorAll('[data-contact="header-call-btn"]').forEach(function (el) {
-      if (hasPhone()) {
-        el.href = CONTACT.phoneHref;
-        el.hidden = false;
-      } else {
-        el.hidden = true;
-        el.removeAttribute('href');
-      }
-    });
-
-    document.querySelectorAll('[data-contact="mobile-nav-call"]').forEach(function (el) {
-      if (hasPhone()) {
-        el.href = CONTACT.phoneHref;
-        el.hidden = false;
-      } else {
-        el.hidden = true;
-        el.removeAttribute('href');
-      }
-    });
-
   }
 
   /* ── Review CTA ── */
@@ -319,22 +299,14 @@
       errors.push({ field: 'name', message: 'Vul uw naam in.' });
     }
 
-    if (!payload.email && !payload.phone) {
-      errors.push({
-        field: 'email',
-        message: 'Vul een e-mailadres of telefoonnummer in.',
-      });
-      errors.push({
-        field: 'phone',
-        message: 'Vul een telefoonnummer of e-mailadres in.',
-      });
-    } else {
-      if (payload.email && !isValidEmail(payload.email)) {
-        errors.push({ field: 'email', message: 'Vul een geldig e-mailadres in.' });
-      }
-      if (payload.phone && !isValidPhone(payload.phone)) {
-        errors.push({ field: 'phone', message: 'Vul een geldig telefoonnummer in.' });
-      }
+    if (!payload.email) {
+      errors.push({ field: 'email', message: 'Vul een e-mailadres in.' });
+    } else if (!isValidEmail(payload.email)) {
+      errors.push({ field: 'email', message: 'Vul een geldig e-mailadres in.' });
+    }
+
+    if (payload.phone && !isValidPhone(payload.phone)) {
+      errors.push({ field: 'phone', message: 'Vul een geldig telefoonnummer in.' });
     }
 
     if (!payload.requestType) {

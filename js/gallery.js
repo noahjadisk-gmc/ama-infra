@@ -81,6 +81,7 @@
       '" role="tabpanel" aria-labelledby="gallery-tab-' +
       activeGroup +
       '">' +
+      '<div class="gallery-editorial__hero-wrap">' +
       '<figure class="gallery-editorial__hero">' +
       '<button type="button" class="gallery-editorial__zoom" data-lightbox="' +
       globalIndex(activeGroup, activeIndex) +
@@ -97,6 +98,7 @@
       '<span class="gallery-editorial__caption-line" aria-hidden="true"></span>' +
       item.caption +
       '</figcaption>' +
+      '</figure>' +
       '<div class="gallery-editorial__context">' +
       '<h3 class="gallery-editorial__context-title">' +
       group.title +
@@ -105,7 +107,7 @@
       group.copy +
       '</p>' +
       '</div>' +
-      '</figure>' +
+      '</div>' +
       '<div class="gallery-editorial__filmstrip" role="list" aria-label="Miniaturen">' +
       renderFilmstrip(activeGroup) +
       '</div>' +

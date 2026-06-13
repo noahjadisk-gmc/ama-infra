@@ -3,7 +3,7 @@
   const menuBtn = document.querySelector('.site-header__menu');
   const mobileNav = document.getElementById('mobile-nav');
   const mobileLinks = mobileNav.querySelectorAll(
-    '.mobile-nav__link, .mobile-nav__cta a, .mobile-nav__call'
+    '.mobile-nav__link, .mobile-nav__cta a'
   );
 
   function updateHeaderScroll() {

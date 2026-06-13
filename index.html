@@ -35,11 +35,6 @@
 
       <div class="site-header__actions">
         <a href="#contact" class="btn btn--primary header-cta">Contact opnemen</a>
-        <a class="site-header__call" data-contact="header-call-btn" hidden aria-label="Bel AMA Infra">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6.5 4h3l1.5 5-2 1.2c1.2 2.4 3.1 4.3 5.5 5.5L16 14l5 1.5v3c0 .6-.4 1-1 1C9.6 19.5 4.5 14.4 4.5 5c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </a>
         <button
           class="site-header__menu"
           type="button"
@@ -56,7 +51,6 @@
   </header>
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobiel menu" hidden>
-    <a class="mobile-nav__call" data-contact="mobile-nav-call" hidden>Bel direct</a>
     <a href="#werk" class="mobile-nav__link">Werk</a>
     <a href="#diensten" class="mobile-nav__link">Werkzaamheden</a>
     <a href="#werkwijze" class="mobile-nav__link">Proces</a>
@@ -83,13 +77,9 @@
               <a href="#contact" class="btn btn--primary btn--lg">Contact opnemen</a>
               <a href="#werk" class="btn btn--secondary btn--lg">Werk bekijken</a>
             </div>
-            <p class="hero__trustline" aria-label="Werkgebieden">
-              Aanleg · Aansluitingen · Herstel · Elektrotechniek
-            </p>
           </div>
 
           <div class="hero__visual">
-            <div class="hero__visual-frame" aria-hidden="true"></div>
             <figure class="hero__figure">
               <img
                 class="hero__photo"
@@ -189,34 +179,22 @@
           </p>
         </div>
 
-        <ol class="process-line" aria-label="Werkwijze in vier stappen">
-          <li class="process-line__step">
-            <span class="process-line__node" aria-hidden="true"></span>
-            <div class="process-line__body">
-              <h3 class="process-line__title">U neemt contact op</h3>
-              <p class="process-line__text">U legt kort uit wat er speelt of welk werk nodig is.</p>
-            </div>
+        <ol class="process-steps" aria-label="Werkwijze in vier stappen">
+          <li class="process-step">
+            <h3 class="process-step__title">U neemt contact op</h3>
+            <p class="process-step__text">U legt kort uit wat er speelt of welk werk nodig is.</p>
           </li>
-          <li class="process-line__step">
-            <span class="process-line__node" aria-hidden="true"></span>
-            <div class="process-line__body">
-              <h3 class="process-line__title">We bekijken de situatie</h3>
-              <p class="process-line__text">De locatie en technische situatie worden beoordeeld.</p>
-            </div>
+          <li class="process-step">
+            <h3 class="process-step__title">We bekijken de situatie</h3>
+            <p class="process-step__text">De locatie en technische situatie worden beoordeeld.</p>
           </li>
-          <li class="process-line__step">
-            <span class="process-line__node" aria-hidden="true"></span>
-            <div class="process-line__body">
-              <h3 class="process-line__title">Het werk wordt uitgevoerd</h3>
-              <p class="process-line__text">Praktisch, veilig en netjes op locatie.</p>
-            </div>
+          <li class="process-step">
+            <h3 class="process-step__title">Het werk wordt uitgevoerd</h3>
+            <p class="process-step__text">Praktisch, veilig en netjes op locatie.</p>
           </li>
-          <li class="process-line__step">
-            <span class="process-line__node" aria-hidden="true"></span>
-            <div class="process-line__body">
-              <h3 class="process-line__title">Alles wordt gecontroleerd</h3>
-              <p class="process-line__text">De verbinding of installatie wordt gecontroleerd en opgeleverd.</p>
-            </div>
+          <li class="process-step">
+            <h3 class="process-step__title">Alles wordt gecontroleerd</h3>
+            <p class="process-step__text">De verbinding of installatie wordt gecontroleerd en opgeleverd.</p>
           </li>
         </ol>
       </div>
@@ -239,25 +217,6 @@
             <li class="trust-lines__item">Netjes en veilig uitgevoerd</li>
             <li class="trust-lines__item">Particulier en zakelijk inzetbaar</li>
           </ul>
-
-          <dl class="register-compact">
-            <div class="register-compact__row">
-              <dt>Bedrijfsnaam</dt>
-              <dd>Ama Infratechniek</dd>
-            </div>
-            <div class="register-compact__row">
-              <dt>KVK-nummer</dt>
-              <dd>95430407</dd>
-            </div>
-            <div class="register-compact__row">
-              <dt>Vestigingsnummer</dt>
-              <dd>000060842768</dd>
-            </div>
-            <div class="register-compact__row">
-              <dt>Adres</dt>
-              <dd data-contact="address">Willem Kromhoutstraat 18, 1067 RC Amsterdam</dd>
-            </div>
-          </dl>
         </div>
       </div>
     </section>
@@ -290,12 +249,11 @@
                 <div class="form-field">
                   <label class="form-field__label" for="contact-phone">Telefoonnummer</label>
                   <input class="form-field__input" type="tel" id="contact-phone" name="phone" autocomplete="tel" inputmode="tel">
-                  <span class="form-field__hint">E-mail of telefoon is verplicht</span>
                   <span class="form-field__error" hidden></span>
                 </div>
                 <div class="form-field form-field--full">
                   <label class="form-field__label" for="contact-email">E-mail</label>
-                  <input class="form-field__input" type="email" id="contact-email" name="email" autocomplete="email" inputmode="email">
+                  <input class="form-field__input" type="email" id="contact-email" name="email" autocomplete="email" inputmode="email" required>
                   <span class="form-field__error" hidden></span>
                 </div>
                 <div class="form-field form-field--full">
@@ -350,6 +308,26 @@
     <div class="container footer__inner">
       <p class="footer__brand">AMA Infra</p>
       <p class="footer__tagline">Glasvezel en elektrotechnische installaties — uitvoering op locatie.</p>
+
+      <dl class="footer__register">
+        <div class="footer__register-row">
+          <dt class="footer__register-label">Bedrijfsnaam</dt>
+          <dd class="footer__register-value">Ama Infratechniek</dd>
+        </div>
+        <div class="footer__register-row">
+          <dt class="footer__register-label">KVK-nummer</dt>
+          <dd class="footer__register-value">95430407</dd>
+        </div>
+        <div class="footer__register-row">
+          <dt class="footer__register-label">Vestigingsnummer</dt>
+          <dd class="footer__register-value">000060842768</dd>
+        </div>
+        <div class="footer__register-row">
+          <dt class="footer__register-label">Adres</dt>
+          <dd class="footer__register-value" data-contact="address">Willem Kromhoutstraat 18, 1067 RC Amsterdam</dd>
+        </div>
+      </dl>
+
       <p class="footer__copy">&copy; 2026 Ama Infratechniek</p>
     </div>
   </footer>
