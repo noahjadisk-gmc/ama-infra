@@ -1,0 +1,233 @@
+/* Gallery — Werk in beeld */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.gallery__tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--soft-line);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.gallery__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery__tab {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-lg);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--steel);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+
+.gallery__tab:hover {
+  color: var(--navy);
+}
+
+.gallery__tab.is-active {
+  color: var(--navy);
+  border-bottom-color: var(--blue);
+}
+
+.gallery__tab-node {
+  width: 0;
+  height: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+  transition: width var(--transition);
+  flex-shrink: 0;
+}
+
+.gallery__tab.is-active .gallery__tab-node {
+  width: 5px;
+}
+
+.gallery__layout {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 900px) {
+  .gallery__layout {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+}
+
+.gallery__visual {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.gallery__main {
+  position: relative;
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--white);
+}
+
+.gallery__main-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: opacity var(--transition-fade);
+}
+
+.gallery__main-img.is-fading {
+  opacity: 0;
+}
+
+.gallery__main-caption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--soft-line);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel);
+  background: var(--white);
+}
+
+.gallery__main-caption::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+
+.gallery__thumbs {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.gallery__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery__thumb {
+  flex-shrink: 0;
+  width: 5.5rem;
+  padding: 0;
+  border: 1px solid var(--soft-line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--white);
+  transition: border-color var(--transition), opacity var(--transition);
+  opacity: 0.65;
+}
+
+.gallery__thumb:hover {
+  opacity: 0.85;
+}
+
+.gallery__thumb.is-active {
+  border-color: var(--blue);
+  opacity: 1;
+}
+
+.gallery__thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.gallery__content {
+  padding-top: var(--space-xs);
+}
+
+@media (min-width: 900px) {
+  .gallery__content {
+    padding-top: var(--space-md);
+    border-left: 1px solid var(--soft-line);
+    padding-left: var(--space-xl);
+  }
+}
+
+.gallery__content-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.gallery__content-text {
+  font-size: 0.9375rem;
+  color: var(--steel);
+  line-height: 1.65;
+  margin-bottom: var(--space-lg);
+}
+
+.gallery__content-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.gallery__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: 0.8125rem;
+  color: var(--navy);
+  line-height: 1.5;
+}
+
+.gallery__bullet-marker {
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--blue);
+  margin-top: 0.55em;
+  position: relative;
+}
+
+.gallery__bullet-marker::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 4px;
+  height: 4px;
+  background: var(--blue);
+  border-radius: 50%;
+}
+
+.gallery__content-meta {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--soft-line);
+}

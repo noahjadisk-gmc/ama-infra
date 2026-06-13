@@ -9,20 +9,24 @@
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header" role="banner">
     <div class="container header__inner">
       <a href="#" class="header__logo" aria-label="AMA Infra — naar boven">
         <span class="header__logo-mark" aria-hidden="true"></span>
-        AMA Infra
+        <span class="header__logo-text">
+          <span class="header__logo-name">AMA</span>
+          <span class="header__logo-sub">Infra</span>
+        </span>
       </a>
 
       <nav class="header__nav" aria-label="Hoofdnavigatie">
         <a href="#diensten" class="header__nav-link">Diensten</a>
+        <a href="#werk" class="header__nav-link">Werk in beeld</a>
         <a href="#werkwijze" class="header__nav-link">Werkwijze</a>
         <a href="#over" class="header__nav-link">Over</a>
         <a href="#contact" class="header__nav-link">Contact</a>
@@ -45,10 +49,10 @@
     </div>
   </header>
 
-  <!-- Mobile nav -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobiel menu" hidden>
     <ul class="mobile-nav__list">
       <li><a href="#diensten" class="mobile-nav__link">Diensten</a></li>
+      <li><a href="#werk" class="mobile-nav__link">Werk in beeld</a></li>
       <li><a href="#werkwijze" class="mobile-nav__link">Werkwijze</a></li>
       <li><a href="#over" class="mobile-nav__link">Over</a></li>
       <li><a href="#contact" class="mobile-nav__link">Contact</a></li>
@@ -60,7 +64,6 @@
 
   <main>
 
-    <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
@@ -94,20 +97,28 @@
           </div>
 
           <div class="hero__visual reveal reveal--delay-2">
-            <figure class="image-frame">
-              <div class="image-frame__inner">
-                <span class="image-frame__placeholder">Foto placeholder</span>
-              </div>
-              <figcaption class="image-frame__caption">
-                Glasvezel / installatie — Amsterdam
-              </figcaption>
-            </figure>
+            <div class="hero__visual-stack">
+              <figure class="tech-frame ama-signature ama-signature--tl ama-signature--br">
+                <div class="tech-frame__media">
+                  <img
+                    src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
+                    alt="Glasvezel aanleg en sleufwerk in Amsterdam"
+                    width="800"
+                    height="600"
+                  >
+                  <span class="tech-frame__label">1067 RC</span>
+                  <span class="tech-frame__node-line" aria-hidden="true"></span>
+                </div>
+                <figcaption class="tech-frame__caption">Glasvezel / installatie — Amsterdam</figcaption>
+              </figure>
+
+              <div class="hero__strip" aria-label="Project preview"></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Diensten -->
     <section class="section" id="diensten" aria-labelledby="diensten-title">
       <div class="container">
         <header class="section__header reveal">
@@ -120,92 +131,151 @@
 
         <div class="services-grid">
           <article class="service-module reveal reveal--delay-1">
-            <p class="service-module__num">01</p>
+            <div class="service-module__head">
+              <span class="service-module__num">01</span>
+              <span class="service-module__node" aria-hidden="true"></span>
+            </div>
             <h3 class="service-module__title">Glasvezel aanleggen</h3>
             <p class="service-module__desc">
               Voor nieuwe aansluitingen, kabelrouting, doortrekken van bekabeling en nette afwerking.
             </p>
+            <div class="service-module__line" aria-hidden="true"></div>
           </article>
 
           <article class="service-module reveal reveal--delay-2">
-            <p class="service-module__num">02</p>
+            <div class="service-module__head">
+              <span class="service-module__num">02</span>
+              <span class="service-module__node" aria-hidden="true"></span>
+            </div>
             <h3 class="service-module__title">Storingen oplossen</h3>
             <p class="service-module__desc">
               Onderzoek en herstel bij geen signaal, slechte verbinding of aansluitproblemen.
             </p>
+            <div class="service-module__line" aria-hidden="true"></div>
           </article>
 
           <article class="service-module reveal reveal--delay-3">
-            <p class="service-module__num">03</p>
+            <div class="service-module__head">
+              <span class="service-module__num">03</span>
+              <span class="service-module__node" aria-hidden="true"></span>
+            </div>
             <h3 class="service-module__title">Aansluitingen realiseren</h3>
             <p class="service-module__desc">
               Van meterkast tot eindpunt, inclusief controle, aansluiting en oplevering.
             </p>
+            <div class="service-module__line" aria-hidden="true"></div>
           </article>
 
           <article class="service-module reveal reveal--delay-4">
-            <p class="service-module__num">04</p>
+            <div class="service-module__head">
+              <span class="service-module__num">04</span>
+              <span class="service-module__node" aria-hidden="true"></span>
+            </div>
             <h3 class="service-module__title">Elektrotechnische bouwinstallatie</h3>
             <p class="service-module__desc">
               Ondersteuning bij technische installaties in woningen en bedrijfspanden.
             </p>
+            <div class="service-module__line" aria-hidden="true"></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Werkwijze -->
-    <section class="section section--grid" id="werkwijze" aria-labelledby="werkwijze-title">
+    <section class="section section--grid" id="werk" aria-labelledby="werk-title">
       <div class="container">
-        <div class="werkwijze werkwijze--horizontal">
-          <header class="section__header reveal">
-            <p class="section__label">02 / Werkwijze</p>
-            <h2 id="werkwijze-title" class="section__title">Werkwijze</h2>
-          </header>
+        <header class="section__header reveal">
+          <p class="section__label">04 / Werk in beeld</p>
+          <h2 id="werk-title" class="section__title">Werk in beeld</h2>
+          <p class="section__intro">
+            Een indruk van aanleg, installatie en herstelwerk op locatie in Amsterdam en omgeving.
+          </p>
+        </header>
 
-          <ol class="werkwijze__timeline">
-            <li class="timeline-step reveal reveal--delay-1">
-              <span class="timeline-step__dot" aria-hidden="true"></span>
-              <p class="timeline-step__num">01</p>
-              <h3 class="timeline-step__title">Contact</h3>
-              <p class="timeline-step__desc">
-                U legt kort uit wat er nodig is of welk probleem speelt.
-              </p>
-            </li>
+        <div class="gallery reveal reveal--delay-1" id="werk-gallery" role="region" aria-label="Projectgalerij">
+          <div class="gallery__tabs" role="tablist" aria-label="Werk categorieën"></div>
 
-            <li class="timeline-step reveal reveal--delay-2">
-              <span class="timeline-step__dot" aria-hidden="true"></span>
-              <p class="timeline-step__num">02</p>
-              <h3 class="timeline-step__title">Inspectie</h3>
-              <p class="timeline-step__desc">
-                De situatie wordt bekeken en de beste aanpak wordt bepaald.
-              </p>
-            </li>
+          <div class="gallery__layout" id="gallery-panel" role="tabpanel">
+            <div class="gallery__visual">
+              <figure class="gallery__main ama-signature ama-signature--tl">
+                <img
+                  class="gallery__main-img"
+                  src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
+                  alt="Lange sleuf voor glasvezelaanleg langs straatwerk in Amsterdam"
+                  width="800"
+                  height="600"
+                >
+                <figcaption class="gallery__main-caption">AANLEG / STRAATWERK</figcaption>
+              </figure>
+              <div class="gallery__thumbs" aria-label="Afbeeldingen"></div>
+            </div>
 
-            <li class="timeline-step reveal reveal--delay-3">
-              <span class="timeline-step__dot" aria-hidden="true"></span>
-              <p class="timeline-step__num">03</p>
-              <h3 class="timeline-step__title">Uitvoering</h3>
-              <p class="timeline-step__desc">
-                De aansluiting, storing of installatie wordt netjes uitgevoerd.
+            <div class="gallery__content">
+              <h3 class="gallery__content-title">Aanleg van glasvezeltrajecten</h3>
+              <p class="gallery__content-text">
+                Bij aanlegwerk draait het om een nette voorbereiding, duidelijke kabelrouting en zorgvuldig uitgevoerd grondwerk.
               </p>
-            </li>
-
-            <li class="timeline-step reveal reveal--delay-4">
-              <span class="timeline-step__dot" aria-hidden="true"></span>
-              <p class="timeline-step__num">04</p>
-              <h3 class="timeline-step__title">Controle</h3>
-              <p class="timeline-step__desc">
-                De verbinding of installatie wordt gecontroleerd en duidelijk opgeleverd.
-              </p>
-            </li>
-          </ol>
+              <ul class="gallery__content-bullets"></ul>
+              <p class="gallery__content-meta">Amsterdam · Aanleg</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Waarom AMA Infra -->
-    <section class="section" id="over" aria-labelledby="over-title">
+    <section class="section" id="werkwijze" aria-labelledby="werkwijze-title">
+      <div class="container">
+        <header class="section__header reveal">
+          <p class="section__label">02 / Werkwijze</p>
+          <h2 id="werkwijze-title" class="section__title">Werkwijze</h2>
+        </header>
+
+        <div class="werkwijze">
+          <div class="timeline-track reveal reveal--delay-1">
+            <span class="timeline-track__line" aria-hidden="true"></span>
+
+            <ol class="werkwijze__timeline">
+              <li class="timeline-step">
+                <span class="timeline-step__dot" aria-hidden="true"></span>
+                <p class="timeline-step__num">01</p>
+                <h3 class="timeline-step__title">Contact</h3>
+                <p class="timeline-step__desc">
+                  U legt kort uit wat er nodig is of welk probleem speelt.
+                </p>
+              </li>
+
+              <li class="timeline-step">
+                <span class="timeline-step__dot" aria-hidden="true"></span>
+                <p class="timeline-step__num">02</p>
+                <h3 class="timeline-step__title">Inspectie</h3>
+                <p class="timeline-step__desc">
+                  De situatie wordt bekeken en de beste aanpak wordt bepaald.
+                </p>
+              </li>
+
+              <li class="timeline-step">
+                <span class="timeline-step__dot" aria-hidden="true"></span>
+                <p class="timeline-step__num">03</p>
+                <h3 class="timeline-step__title">Uitvoering</h3>
+                <p class="timeline-step__desc">
+                  De aansluiting, storing of installatie wordt netjes uitgevoerd.
+                </p>
+              </li>
+
+              <li class="timeline-step">
+                <span class="timeline-step__dot" aria-hidden="true"></span>
+                <p class="timeline-step__num">04</p>
+                <h3 class="timeline-step__title">Controle</h3>
+                <p class="timeline-step__desc">
+                  De verbinding of installatie wordt gecontroleerd en duidelijk opgeleverd.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--grid" id="over" aria-labelledby="over-title">
       <div class="container">
         <header class="section__header reveal">
           <p class="section__label">03 / Over AMA Infra</p>
@@ -214,43 +284,49 @@
 
         <div class="split-section">
           <p class="split-section__text reveal">
-            AMA Infratechniek is een installateur uit Amsterdam, actief in glasvezelwerk en elektrotechnische bouwinstallaties. Werkgebied: Amsterdam en omgeving.
+            AMA Infratechniek is een <strong>lokale installateur uit Amsterdam</strong>, actief in glasvezelwerk en elektrotechnische bouwinstallaties. Werkgebied: Amsterdam en omgeving.
           </p>
 
-          <div class="split-section__checks reveal reveal--delay-2">
-            <div class="line-check">
-              <span class="line-check__marker" aria-hidden="true"></span>
-              <span class="line-check__text">Lokale vakman uit Amsterdam</span>
-            </div>
-            <div class="line-check">
-              <span class="line-check__marker" aria-hidden="true"></span>
-              <span class="line-check__text">Ervaring met glasvezelwerk</span>
-            </div>
-            <div class="line-check">
-              <span class="line-check__marker" aria-hidden="true"></span>
-              <span class="line-check__text">Netjes en veilig uitgevoerd</span>
-            </div>
-            <div class="line-check">
-              <span class="line-check__marker" aria-hidden="true"></span>
-              <span class="line-check__text">Duidelijke communicatie</span>
-            </div>
-            <div class="line-check">
-              <span class="line-check__marker" aria-hidden="true"></span>
-              <span class="line-check__text">Geschikt voor particuliere en zakelijke opdrachten</span>
+          <div class="trust-block reveal reveal--delay-2">
+            <p class="trust-block__header">Controlelijst</p>
+            <div class="trust-block__body">
+              <div class="line-check">
+                <span class="line-check__marker" aria-hidden="true"></span>
+                <span class="line-check__text">Lokale vakman uit Amsterdam</span>
+              </div>
+              <div class="line-check">
+                <span class="line-check__marker" aria-hidden="true"></span>
+                <span class="line-check__text">Ervaring met glasvezelwerk</span>
+              </div>
+              <div class="line-check">
+                <span class="line-check__marker" aria-hidden="true"></span>
+                <span class="line-check__text">Netjes en veilig uitgevoerd</span>
+              </div>
+              <div class="line-check">
+                <span class="line-check__marker" aria-hidden="true"></span>
+                <span class="line-check__text">Duidelijke communicatie</span>
+              </div>
+              <div class="line-check">
+                <span class="line-check__marker" aria-hidden="true"></span>
+                <span class="line-check__text">Particulier en zakelijk inzetbaar</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Bedrijfsinformatie -->
-    <section class="section section--grid" aria-labelledby="bedrijf-title">
+    <section class="section" aria-labelledby="bedrijf-title">
       <div class="container">
         <header class="section__header reveal">
           <h2 id="bedrijf-title" class="section__title">Bedrijfsinformatie</h2>
         </header>
 
-        <div class="register-block reveal reveal--delay-1">
+        <div class="register-block reveal reveal--delay-1 ama-signature ama-signature--tl ama-signature--br">
+          <div class="register-block__header">
+            <p class="register-block__title">Officiële bedrijfsgegevens</p>
+            <p class="register-block__ref">REF · KVK 95430407</p>
+          </div>
           <div class="register-row">
             <span class="register-row__label">Bedrijfsnaam</span>
             <span class="register-row__value">Ama Infratechniek</span>
@@ -275,10 +351,9 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section class="section" id="contact" aria-labelledby="contact-title">
       <div class="container">
-        <div class="contact-cta reveal">
+        <div class="contact-cta reveal ama-signature ama-signature--tl ama-signature--br">
           <h2 id="contact-title" class="contact-cta__title">
             Hulp nodig met glasvezel of installatie?
           </h2>
@@ -318,7 +393,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer__grid">
@@ -326,6 +400,7 @@
           <p class="footer__brand">
             <span class="footer__brand-dot" aria-hidden="true"></span>
             AMA Infra
+            <span class="footer__brand-line" aria-hidden="true"></span>
           </p>
           <p class="footer__tagline">Glasvezel en elektrotechnische installaties.</p>
           <p class="footer__meta">
@@ -338,6 +413,7 @@
           <p class="footer__nav-title">Navigatie</p>
           <ul class="footer__nav-list">
             <li><a href="#diensten" class="footer__nav-link">Diensten</a></li>
+            <li><a href="#werk" class="footer__nav-link">Werk in beeld</a></li>
             <li><a href="#werkwijze" class="footer__nav-link">Werkwijze</a></li>
             <li><a href="#over" class="footer__nav-link">Over</a></li>
             <li><a href="#contact" class="footer__nav-link">Contact</a></li>
@@ -349,6 +425,8 @@
     </div>
   </footer>
 
+  <script src="js/gallery-data.js"></script>
+  <script src="js/gallery.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
