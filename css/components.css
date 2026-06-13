@@ -67,10 +67,22 @@
 
 /* Photo frame */
 .photo-frame {
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background: var(--white);
   border: 1px solid var(--soft-line);
+}
+
+.photo-frame--hero .photo-frame__img {
+  aspect-ratio: 5 / 4;
+  object-position: center 35%;
+}
+
+@media (min-width: 768px) {
+  .photo-frame--hero .photo-frame__img {
+    aspect-ratio: 4 / 3;
+    min-height: 22rem;
+  }
 }
 
 .photo-frame__img {
@@ -90,10 +102,10 @@
 
 /* Service module */
 .service-module {
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   background: var(--white);
   border: 1px solid var(--soft-line);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border-top: 2px solid var(--blue);
 }
 
@@ -285,9 +297,19 @@
 .contact-details {
   display: grid;
   gap: var(--space-sm);
-  margin-top: var(--space-xl);
-  padding-top: var(--space-xl);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 768px) {
+  .contact-panel .contact-details {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    padding-left: var(--space-xl);
+  }
 }
 
 .contact-details__row {

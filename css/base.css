@@ -62,12 +62,12 @@ ol {
 }
 
 .section {
-  padding-block: var(--space-3xl);
+  padding-block: var(--space-2xl);
 }
 
 @media (min-width: 768px) {
   .section {
-    padding-block: var(--space-4xl);
+    padding-block: var(--space-3xl);
   }
 }
 

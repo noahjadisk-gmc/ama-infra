@@ -59,7 +59,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
-          <div class="hero__content">
+          <div class="hero__copy">
             <h1 id="hero-title" class="hero__title">
               Glasvezel en installatiewerk in Amsterdam
             </h1>
@@ -68,34 +68,30 @@
               AMA Infratechniek helpt met glasvezelaansluitingen, aanlegwerk, storingen en elektrotechnische bouwinstallaties. Praktisch, netjes en duidelijk uitgevoerd.
             </p>
 
-            <ul class="hero__trust">
-              <li class="hero__trust-item">Glasvezel &amp; installatie</li>
-              <li class="hero__trust-item">Amsterdam en omgeving</li>
-            </ul>
-
             <div class="btn-group">
               <a href="tel:+31616663218" class="btn btn--primary">Contact opnemen</a>
               <a href="#werk" class="btn btn--secondary">Bekijk werkzaamheden</a>
             </div>
-
-            <div class="hero__details">
-              <span>KVK 95430407</span>
-              <span>1067 RC Amsterdam</span>
-            </div>
           </div>
 
-          <figure class="photo-frame">
+          <figure class="photo-frame photo-frame--hero hero__visual">
             <img
               class="photo-frame__img"
-              src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
-              alt="Glasvezel aanlegwerk in Amsterdam"
+              src="images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg"
+              alt="Huisaansluiting glasvezel op locatie in Amsterdam"
               width="800"
               height="600"
             >
             <figcaption class="photo-frame__caption">
-              Glasvezel aanleg / Amsterdam en omgeving
+              Werk op locatie / Amsterdam en omgeving
             </figcaption>
           </figure>
+
+          <ul class="hero__trustline">
+            <li class="hero__trustline-item">Direct inzetbaar in Amsterdam</li>
+            <li class="hero__trustline-item">Glasvezel, aanleg &amp; storingen</li>
+            <li class="hero__trustline-item">Netjes uitgevoerd op locatie</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -188,7 +184,8 @@
           <h2 id="werkwijze-title" class="section__title">Zo werkt AMA Infra</h2>
         </header>
 
-        <div class="timeline-track">
+        <div class="process-panel">
+          <div class="timeline-track">
           <span class="timeline-track__line" aria-hidden="true"></span>
           <ol class="werkwijze__timeline">
             <li class="timeline-step">
@@ -220,6 +217,7 @@
               </p>
             </li>
           </ol>
+          </div>
         </div>
       </div>
     </section>
@@ -228,7 +226,7 @@
       <div class="container">
         <div class="about-split">
           <div>
-            <h2 id="over-title" class="about-split__title">Betrouwbaar werk, duidelijk uitgevoerd</h2>
+            <h2 id="over-title" class="about-split__title">Vakwerk voor glasvezel en installatie</h2>
             <p class="about-split__text">
               AMA Infratechniek werkt lokaal in Amsterdam en omgeving aan glasvezel en elektrotechnische installaties. De focus ligt op nette uitvoering, duidelijke communicatie en praktische oplossingen op locatie.
             </p>
@@ -299,27 +297,29 @@
     <section class="section section--contact" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact-panel">
-          <h2 id="contact-title" class="contact-panel__title">
-            Hulp nodig met glasvezel of installatie?
-          </h2>
-          <p class="contact-panel__text">
-            Stuur een bericht of neem contact op voor een afspraak. AMA Infratechniek helpt met aanleg, aansluiting, storing en elektrotechnische werkzaamheden in Amsterdam en omgeving.
-          </p>
+          <div class="contact-panel__main">
+            <h2 id="contact-title" class="contact-panel__title">
+              Hulp nodig met glasvezel of installatie?
+            </h2>
+            <p class="contact-panel__text">
+              Stuur een bericht of neem contact op voor een afspraak. AMA Infratechniek helpt met aanleg, aansluiting, storing en elektrotechnische werkzaamheden in Amsterdam en omgeving.
+            </p>
 
-          <div class="btn-group">
-            <a href="tel:+31616663218" class="btn btn--light">Contact opnemen</a>
-            <a href="mailto:info@amainfra.nl" class="btn btn--outline-light">E-mail sturen</a>
-            <a
-              href="https://maps.google.com/?q=Willem+Kromhoutstraat+18,+1067+RC+Amsterdam"
-              class="btn btn--outline-light"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Route bekijken
-            </a>
+            <div class="btn-group">
+              <a href="tel:+31616663218" class="btn btn--light">Contact opnemen</a>
+              <a href="mailto:info@amainfra.nl" class="btn btn--outline-light">E-mail sturen</a>
+              <a
+                href="https://maps.google.com/?q=Willem+Kromhoutstraat+18,+1067+RC+Amsterdam"
+                class="btn btn--outline-light"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Route bekijken
+              </a>
+            </div>
           </div>
 
-          <address class="contact-details">
+          <address class="contact-details contact-panel__aside">
             <div class="contact-details__row">
               <span class="contact-details__label">Telefoon</span>
               <a href="tel:+31616663218" class="contact-details__value contact-details__link">+31 6 16663218</a>
