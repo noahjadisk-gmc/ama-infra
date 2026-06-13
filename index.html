@@ -11,8 +11,11 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
+
+  <a href="#main-content" class="skip-link">Direct naar inhoud</a>
 
   <header class="header" role="banner">
     <div class="container header__inner">
@@ -25,11 +28,17 @@
         <a href="#werk" class="header__nav-link">Werk in beeld</a>
         <a href="#werkwijze" class="header__nav-link">Werkwijze</a>
         <a href="#over" class="header__nav-link">Over</a>
+        <a href="#ervaringen" class="header__nav-link">Ervaringen</a>
         <a href="#contact" class="header__nav-link">Contact</a>
       </nav>
 
       <div class="header__actions">
-        <a href="tel:+31616663218" class="btn btn--primary btn--sm primary-cta header__cta">Contact opnemen</a>
+        <a href="#contact" class="btn btn--primary btn--sm primary-cta header__cta">Contact opnemen</a>
+        <a class="header__call-btn" data-contact="header-call-btn" hidden aria-label="Bel AMA Infra">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.5 4h3l1.5 5-2 1.2c1.2 2.4 3.1 4.3 5.5 5.5L16 14l5 1.5v3c0 .6-.4 1-1 1C9.6 19.5 4.5 14.4 4.5 5c0-.6.4-1 1-1Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </a>
         <button
           class="header__menu-btn"
           type="button"
@@ -46,19 +55,21 @@
   </header>
 
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobiel menu" hidden>
+    <a class="mobile-nav__call" data-contact="mobile-nav-call" hidden>Bel direct</a>
     <a href="#diensten" class="mobile-nav__link">Werkzaamheden</a>
     <a href="#werk" class="mobile-nav__link">Werk in beeld</a>
     <a href="#werkwijze" class="mobile-nav__link">Werkwijze</a>
     <a href="#over" class="mobile-nav__link">Over</a>
+    <a href="#ervaringen" class="mobile-nav__link">Ervaringen</a>
     <a href="#contact" class="mobile-nav__link">Contact</a>
     <div class="mobile-nav__cta">
-      <a href="tel:+31616663218" class="btn btn--primary primary-cta">Contact opnemen</a>
+      <a href="#contact" class="btn btn--primary primary-cta">Contact opnemen</a>
     </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="hero" aria-labelledby="hero-title">
       <div class="container hero__container">
         <div class="hero__grid">
           <div class="hero__copy">
@@ -71,12 +82,18 @@
             </p>
 
             <div class="btn-group hero__actions">
-              <a href="tel:+31616663218" class="btn btn--primary primary-cta">Contact opnemen</a>
+              <a href="#contact" class="btn btn--primary primary-cta">Contact opnemen</a>
+              <a class="btn btn--secondary" data-contact="call-btn" hidden>Bel direct</a>
               <a href="#werk" class="btn btn--secondary secondary-cta">Bekijk werkzaamheden</a>
             </div>
 
             <p class="hero__trustline" aria-label="Werkgebieden">
               Aanleg · Huisaansluitingen · Kabelschade · Elektrotechniek
+            </p>
+
+            <p class="hero__contact-hint" data-contact="hero-contact-hint" hidden>
+              <span>Direct bereikbaar:</span>
+              <a class="hero__contact-link" data-contact="hero-phone-link"></a>
             </p>
           </div>
 
@@ -161,13 +178,10 @@
       </div>
     </section>
 
-    <section class="section section--werk" id="werk" aria-labelledby="werk-title">
+    <section class="section section--white" id="werk" aria-labelledby="werk-title">
       <div class="container werk__container">
         <header class="werk-header section__header section__header--compact">
-          <p class="section__eyebrow werk-header__eyebrow">
-            <span class="section__eyebrow-dot" aria-hidden="true"></span>
-            Bewijs van uitvoering
-          </p>
+          <span class="section__label">Bewijs van uitvoering</span>
           <h2 id="werk-title" class="section__title section__title--lg">Werk in beeld</h2>
           <p class="section__intro">
             Echt werk op locatie — aanleg, installatie en herstel in Amsterdam.
@@ -180,13 +194,10 @@
       </div>
     </section>
 
-    <section class="section section--werkwijze" id="werkwijze" aria-labelledby="werkwijze-title">
+    <section class="section section--sand" id="werkwijze" aria-labelledby="werkwijze-title">
       <div class="container werkwijze__container">
         <header class="werkwijze-header section__header section__header--compact">
-          <p class="section__eyebrow werkwijze-header__eyebrow">
-            <span class="section__eyebrow-dot" aria-hidden="true"></span>
-            Zo werken wij
-          </p>
+          <span class="section__label">Zo werken wij</span>
           <h2 id="werkwijze-title" class="section__title section__title--lg">Van melding tot oplevering</h2>
           <p class="section__intro">
             Een helder proces — van eerste contact tot nette oplevering op locatie.
@@ -256,7 +267,7 @@
       </div>
     </section>
 
-    <section class="section section--over" id="over" aria-labelledby="over-title">
+    <section class="section section--mist" id="over" aria-labelledby="over-title">
       <div class="container over__container">
         <div class="brand-panel">
           <div class="brand-panel__story">
@@ -302,11 +313,49 @@
       </div>
     </section>
 
-    <section class="section section--white section--compact" id="bedrijfsgegevens" aria-labelledby="register-title">
+    <section class="section section--white" id="ervaringen" aria-labelledby="ervaringen-title">
       <div class="container">
+        <header class="section__header section__header--compact">
+          <span class="section__label">Ervaringen</span>
+          <h2 id="ervaringen-title" class="section__title section__title--lg">Ervaringen uit de praktijk</h2>
+          <p class="section__intro">
+            Binnenkort worden hier klantreacties en projectervaringen toegevoegd.
+          </p>
+        </header>
+
+        <div class="experience-panel">
+          <ul class="experience-quotes" aria-label="Indrukken uit projecten">
+            <li class="experience-quote">
+              <p class="experience-quote__text">Netjes gewerkt en duidelijk gecommuniceerd.</p>
+              <p class="experience-quote__meta">Projectervaring — geen naam vermeld</p>
+            </li>
+            <li class="experience-quote">
+              <p class="experience-quote__text">Snel geholpen bij een glasvezelstoring.</p>
+              <p class="experience-quote__meta">Projectervaring — geen naam vermeld</p>
+            </li>
+            <li class="experience-quote">
+              <p class="experience-quote__text">Aansluiting professioneel voorbereid en afgerond.</p>
+              <p class="experience-quote__meta">Projectervaring — geen naam vermeld</p>
+            </li>
+          </ul>
+
+          <div class="experience-panel__footer" data-contact="review-cta"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--sand" id="bedrijfsinfo" aria-labelledby="bedrijfsinfo-title">
+      <div class="container">
+        <header class="section__header section__header--compact">
+          <span class="section__label">Bedrijfsgegevens</span>
+          <h2 id="bedrijfsinfo-title" class="section__title section__title--lg">Bedrijfsinformatie</h2>
+          <p class="section__intro">
+            Officiële gegevens van Ama Infratechniek, handelend onder AMA Infra.
+          </p>
+        </header>
+
         <div class="register-panel">
-          <h2 id="register-title" class="section__title">Officiële bedrijfsgegevens</h2>
-          <dl class="register-list">
+          <dl class="register-grid">
             <div class="register-row">
               <dt class="register-row__label">Bedrijfsnaam</dt>
               <dd class="register-row__value">Ama Infratechniek</dd>
@@ -329,58 +378,161 @@
             </div>
             <div class="register-row">
               <dt class="register-row__label">Adres</dt>
-              <dd class="register-row__value">Willem Kromhoutstraat 18, 1067 RC Amsterdam</dd>
+              <dd class="register-row__value" data-contact="address">Willem Kromhoutstraat 18, 1067 RC Amsterdam</dd>
             </div>
           </dl>
         </div>
       </div>
     </section>
 
-    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+    <section class="section section--mist section--contact" id="contact" aria-labelledby="contact-title">
       <div class="container contact__container">
-        <div class="contact-panel">
-          <div class="contact-panel__content">
-            <p class="contact-panel__eyebrow">
-              <span class="contact-panel__eyebrow-dot" aria-hidden="true"></span>
-              Contact opnemen
+        <header class="section__header section__header--compact">
+          <span class="section__label">Contact</span>
+          <h2 id="contact-title" class="section__title section__title--lg">Neem contact op</h2>
+          <p class="section__intro">
+            Stuur een aanvraag of neem direct contact op voor aanleg, aansluiting, storing of elektrotechnisch werk in Amsterdam en omgeving.
+          </p>
+        </header>
+
+        <div class="contact-layout">
+          <div class="contact-form-panel">
+            <h3 class="contact-form-panel__title">Contactformulier</h3>
+            <p class="contact-form-panel__intro">
+              Beschrijf kort uw situatie. AMA Infra neemt zo snel mogelijk contact met u op.
             </p>
 
-            <h2 id="contact-title" class="contact-panel__title">
-              Storing, aansluiting of aanlegwerk?
-            </h2>
+            <div
+              id="contact-form-error"
+              class="form-message form-message--error"
+              role="alert"
+              tabindex="-1"
+              hidden
+            ></div>
 
-            <p class="contact-panel__text">
-              Neem contact op voor een afspraak of korte uitleg van de situatie. AMA Infra helpt met aanleg, aansluiting, storing en elektrotechnische werkzaamheden in Amsterdam en omgeving.
+            <div
+              id="contact-form-success"
+              class="form-message form-message--success"
+              role="status"
+              tabindex="-1"
+              hidden
+            >
+              <p class="form-message__title">Bedankt voor uw aanvraag.</p>
+              <p class="form-message__text">
+                AMA Infra neemt zo snel mogelijk contact met u op.
+              </p>
+            </div>
+
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-grid form-grid--split">
+                <div class="form-field">
+                  <label class="form-field__label" for="contact-name">Naam</label>
+                  <input
+                    class="form-field__input"
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    autocomplete="name"
+                    required
+                  >
+                  <span class="form-field__error" hidden></span>
+                </div>
+
+                <div class="form-field">
+                  <label class="form-field__label" for="contact-phone">Telefoonnummer</label>
+                  <input
+                    class="form-field__input"
+                    type="tel"
+                    id="contact-phone"
+                    name="phone"
+                    autocomplete="tel"
+                    inputmode="tel"
+                  >
+                  <span class="form-field__hint">E-mail of telefoon is verplicht</span>
+                  <span class="form-field__error" hidden></span>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <label class="form-field__label" for="contact-email">E-mail</label>
+                  <input
+                    class="form-field__input"
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    autocomplete="email"
+                    inputmode="email"
+                  >
+                  <span class="form-field__error" hidden></span>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <label class="form-field__label" for="contact-request-type">Type aanvraag</label>
+                  <select class="form-field__select" id="contact-request-type" name="requestType" required>
+                    <option value="">Kies een type aanvraag</option>
+                    <option value="glasvezel-aanleg">Glasvezel aanleg</option>
+                    <option value="huisaansluiting">Huisaansluiting</option>
+                    <option value="kabelschade-storing">Kabelschade / storing</option>
+                    <option value="elektrotechnische-installatie">Elektrotechnische installatie</option>
+                    <option value="anders">Anders</option>
+                  </select>
+                  <span class="form-field__error" hidden></span>
+                </div>
+
+                <div class="form-field form-field--full">
+                  <label class="form-field__label" for="contact-message">Bericht</label>
+                  <textarea
+                    class="form-field__textarea"
+                    id="contact-message"
+                    name="message"
+                    rows="5"
+                    required
+                  ></textarea>
+                  <span class="form-field__error" hidden></span>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn--primary primary-cta">Aanvraag versturen</button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="contact-aside" aria-label="Direct contact">
+            <h3 class="contact-aside__title">Direct contact</h3>
+            <p class="contact-aside__text">
+              Liever direct contact? Stuur een e-mail, bekijk de route of bel zodra het telefoonnummer beschikbaar is.
             </p>
 
-            <div class="btn-group contact-panel__actions">
-              <a href="tel:+31616663218" class="btn btn--primary primary-cta">Bel direct</a>
-              <a href="mailto:info@amainfra.nl" class="btn btn--outline-light">E-mail sturen</a>
+            <div class="contact-aside__actions">
+              <a href="mailto:info@amainfra.nl" class="btn btn--primary primary-cta" data-contact="email-link">E-mail sturen</a>
               <a
-                href="https://maps.google.com/?q=Willem+Kromhoutstraat+18,+1067+RC+Amsterdam"
+                href="https://www.google.com/maps/search/?api=1&query=Willem%20Kromhoutstraat%2018%2C%201067%20RC%20Amsterdam"
                 class="btn btn--outline-light"
+                data-contact="maps-link"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Route bekijken
               </a>
+              <a class="btn btn--outline-light" data-contact="call-btn" hidden>Bel direct</a>
+              <span class="contact-aside__pending" data-contact="call-btn-pending">Telefoon volgt</span>
             </div>
-          </div>
 
-          <address class="contact-panel__details">
-            <div class="contact-panel__detail">
-              <span class="contact-panel__detail-label">Telefoon</span>
-              <a href="tel:+31616663218" class="contact-panel__detail-value">+31 6 16663218</a>
-            </div>
-            <div class="contact-panel__detail">
-              <span class="contact-panel__detail-label">E-mail</span>
-              <a href="mailto:info@amainfra.nl" class="contact-panel__detail-value">info@amainfra.nl</a>
-            </div>
-            <div class="contact-panel__detail">
-              <span class="contact-panel__detail-label">Adres</span>
-              <span class="contact-panel__detail-value">Willem Kromhoutstraat 18, 1067 RC Amsterdam</span>
-            </div>
-          </address>
+            <address class="contact-details">
+              <div class="contact-detail">
+                <span class="contact-detail__label">Telefoon</span>
+                <a class="contact-detail__value contact-detail__value--pending" data-contact="phone-value">Nog toevoegen</a>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-detail__label">E-mail</span>
+                <a href="mailto:info@amainfra.nl" class="contact-detail__value" data-contact="email">info@amainfra.nl</a>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-detail__label">Adres</span>
+                <span class="contact-detail__value" data-contact="address">Willem Kromhoutstraat 18, 1067 RC Amsterdam</span>
+              </div>
+            </address>
+          </aside>
         </div>
       </div>
     </section>
@@ -388,18 +540,20 @@
   </main>
 
   <footer class="footer footer--navy" role="contentinfo">
-    <div class="container">
-      <p class="footer__brand">AMA Infra</p>
-      <p class="footer__tagline">Glasvezel en elektrotechnische installaties — uitvoering op locatie.</p>
-      <p class="footer__meta">
-        KVK 95430407 · Willem Kromhoutstraat 18, 1067 RC Amsterdam
-      </p>
+    <div class="container footer__inner">
+      <div class="footer__intro">
+        <p class="footer__brand">AMA Infra</p>
+        <p class="footer__tagline">Glasvezel en elektrotechnische installaties — uitvoering op locatie.</p>
+      </div>
+
       <p class="footer__copy">&copy; 2026 Ama Infratechniek</p>
     </div>
   </footer>
 
+  <script src="js/contact-config.js"></script>
   <script src="js/gallery-data.js"></script>
   <script src="js/gallery.js"></script>
+  <script src="js/contact.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

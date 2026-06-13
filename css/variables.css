@@ -5,11 +5,21 @@
   --infra-green: #1F6B57;
   --signal-orange: #F26A21;
   --sand: #F4F1EA;
-  --mist: #EEF3F1;
+  /* Sectie-achtergrond: donkerder groen-grijs uit palette */
+  --mist: #DDE6E1;
+  --mist: color-mix(in srgb, var(--deep-green) 14%, var(--sand));
   --white: #FFFFFF;
-  --steel: #66737A;
-  --line: rgba(8, 17, 28, 0.14);
-  --line-strong: rgba(8, 17, 28, 0.22);
+
+  /* Oppervlakken — scheiding kleur-op-kleur */
+  --surface-raised: var(--white);
+  --surface-inset: #E8EFEB;
+  --surface-inset: color-mix(in srgb, var(--deep-green) 12%, var(--white));
+
+  /* Tekst & lijnen — iets sterker voor leesbaarheid */
+  --steel: #4A5660;
+  --text-secondary: #3F4D54;
+  --line: rgba(8, 17, 28, 0.18);
+  --line-strong: rgba(8, 17, 28, 0.3);
 
   --radius-sm: 4px;
   --radius-md: 7px;
@@ -28,8 +38,13 @@
   --container: 73.75rem;
   --header-h: 4rem;
 
-  --section-pad-mobile: 4rem;
-  --section-pad-desktop: 6rem;
+  --section-pad-mobile: 3.5rem;
+  --section-pad-desktop: 5.5rem;
+
+  --scroll-offset: calc(var(--header-h) + 0.75rem);
+
+  --shadow-surface: 0 10px 28px rgba(8, 17, 28, 0.06);
+  --shadow-surface-raised: 0 14px 36px rgba(8, 17, 28, 0.1);
 
   --transition: 220ms ease;
   --shadow-soft: 0 12px 28px rgba(8, 17, 28, 0.12);
