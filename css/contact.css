@@ -373,57 +373,6 @@ a.contact-detail__value:hover {
   border-radius: var(--radius-md);
 }
 
-/* Bedrijfsinformatie */
-.register-panel {
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  background: var(--surface-raised);
-  border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-surface);
-}
-
-@media (min-width: 768px) {
-  .register-panel {
-    padding: var(--space-xl);
-  }
-}
-
-.register-grid {
-  display: grid;
-  gap: var(--space-md) var(--space-xl);
-}
-
-@media (min-width: 640px) {
-  .register-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 900px) {
-  .register-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.register-row {
-  display: grid;
-  gap: 0.15rem;
-}
-
-.register-row__label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--infra-green);
-}
-
-.register-row__value {
-  font-size: 0.9375rem;
-  color: var(--navy);
-  line-height: 1.45;
-}
-
 /* WhatsApp floating CTA */
 .whatsapp-float {
   position: fixed;

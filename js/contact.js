@@ -107,19 +107,6 @@
       }
     });
 
-    document.querySelectorAll('[data-contact="hero-contact-hint"]').forEach(function (el) {
-      el.hidden = !hasPhone();
-    });
-
-    document.querySelectorAll('[data-contact="hero-phone-link"]').forEach(function (el) {
-      if (hasPhone()) {
-        el.href = CONTACT.phoneHref;
-        el.textContent = CONTACT.phoneLabel;
-      } else {
-        el.removeAttribute('href');
-        el.textContent = '';
-      }
-    });
   }
 
   /* ── Review CTA ── */

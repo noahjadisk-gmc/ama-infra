@@ -164,7 +164,6 @@ ol {
 .section--mist .capabilities-panel,
 .section--mist .brand-panel,
 .section--sand .flow-panel,
-.section--sand .register-panel,
 .section--contact .contact-form-panel {
   background: var(--surface-raised);
   box-shadow: var(--shadow-surface-raised);
