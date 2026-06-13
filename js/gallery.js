@@ -1,106 +1,185 @@
 (function () {
   'use strict';
 
-  function initGallery() {
-    var root = document.getElementById('werk-gallery');
-    if (!root || !window.AMA_GALLERY) return;
+  var items = [];
+  var currentIndex = 0;
+  var lightbox = null;
+  var lastFocus = null;
 
-    var data = window.AMA_GALLERY;
-    var activeTab = 0;
-    var activeImage = 0;
+  function renderPhoto(item, index) {
+    var badge = item.featured
+      ? '<span class="bento__badge">Werk op locatie · Amsterdam</span>'
+      : '';
 
-    var tabsEl = root.querySelector('.gallery__tabs');
-    var mainImg = root.querySelector('.gallery__main-img');
-    var mainLabel = root.querySelector('.gallery__main-label');
-    var titleEl = root.querySelector('.gallery__content-title');
-    var textEl = root.querySelector('.gallery__content-text');
-    var thumbsEl = root.querySelector('.gallery__filmstrip');
+    var featuredClass = item.featured ? ' bento__cell--featured' : '';
 
-    function renderTabs() {
-      tabsEl.innerHTML = data.tabs
-        .map(function (tab, i) {
-          return (
-            '<button type="button" class="gallery__tab' +
-            (i === activeTab ? ' is-active' : '') +
-            '" role="tab" aria-selected="' +
-            (i === activeTab) +
-            '" aria-controls="gallery-panel" id="gallery-tab-' +
-            tab.id +
-            '" data-index="' +
-            i +
-            '">' +
-            tab.label +
-            '</button>'
-          );
-        })
-        .join('');
-    }
-
-    function renderThumbs() {
-      var images = data.tabs[activeTab].images;
-      if (images.length <= 1) {
-        thumbsEl.innerHTML = '';
-        thumbsEl.hidden = true;
-        return;
-      }
-      thumbsEl.hidden = false;
-      thumbsEl.innerHTML = images
-        .map(function (img, i) {
-          return (
-            '<button type="button" class="gallery__thumb' +
-            (i === activeImage ? ' is-active' : '') +
-            '" aria-label="' +
-            img.alt +
-            '" data-index="' +
-            i +
-            '">' +
-            '<img src="' +
-            img.src +
-            '" alt="" loading="lazy" width="120" height="90">' +
-            '</button>'
-          );
-        })
-        .join('');
-    }
-
-    function renderContent() {
-      var tab = data.tabs[activeTab];
-      var img = tab.images[activeImage];
-
-      mainImg.classList.add('is-fading');
-      window.setTimeout(function () {
-        mainImg.src = img.src;
-        mainImg.alt = img.alt;
-        mainLabel.textContent = img.caption;
-        mainImg.classList.remove('is-fading');
-      }, 120);
-
-      titleEl.textContent = tab.title;
-      textEl.textContent = tab.text;
-
-      renderThumbs();
-      renderTabs();
-    }
-
-    tabsEl.addEventListener('click', function (e) {
-      var btn = e.target.closest('.gallery__tab');
-      if (!btn) return;
-      var index = parseInt(btn.dataset.index, 10);
-      if (index === activeTab) return;
-      activeTab = index;
-      activeImage = 0;
-      renderContent();
-    });
-
-    thumbsEl.addEventListener('click', function (e) {
-      var btn = e.target.closest('.gallery__thumb');
-      if (!btn) return;
-      activeImage = parseInt(btn.dataset.index, 10);
-      renderContent();
-    });
-
-    renderContent();
+    return (
+      '<figure class="bento__cell bento__cell--photo' +
+      featuredClass +
+      '">' +
+      badge +
+      '<button type="button" class="bento__trigger" data-index="' +
+      index +
+      '" aria-label="Vergroot: ' +
+      item.caption +
+      '">' +
+      '<img class="bento__img" src="' +
+      item.src +
+      '" alt="' +
+      item.alt +
+      '" loading="lazy" width="1600" height="900">' +
+      '</button>' +
+      '<figcaption class="bento__meta">' +
+      '<span class="bento__label">' +
+      item.caption +
+      '</span>' +
+      '</figcaption>' +
+      '</figure>'
+    );
   }
 
-  document.addEventListener('DOMContentLoaded', initGallery);
+  function renderBlock(group, startIndex) {
+    var photos = group.items
+      .map(function (item, i) {
+        return renderPhoto(item, startIndex + i);
+      })
+      .join('');
+
+    return (
+      '<section class="bento-block" aria-label="' +
+      group.label +
+      '">' +
+      '<h3 class="bento-block__label">' +
+      group.label +
+      '</h3>' +
+      '<div class="bento-block__grid bento-block__grid--' +
+      group.layout +
+      '">' +
+      photos +
+      '</div>' +
+      '</section>'
+    );
+  }
+
+  function createLightbox() {
+    var el = document.createElement('div');
+    el.className = 'lightbox';
+    el.id = 'bento-lightbox';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-modal', 'true');
+    el.setAttribute('aria-label', 'Vergrote foto');
+    el.hidden = true;
+    el.innerHTML =
+      '<div class="lightbox__backdrop" data-close></div>' +
+      '<div class="lightbox__panel">' +
+      '<button type="button" class="lightbox__close" aria-label="Sluiten">' +
+      '<span aria-hidden="true">&times;</span>' +
+      '</button>' +
+      '<button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Vorige foto">' +
+      '<span aria-hidden="true">&larr;</span>' +
+      '</button>' +
+      '<figure class="lightbox__figure">' +
+      '<img class="lightbox__img" src="" alt="">' +
+      '<figcaption class="lightbox__caption"></figcaption>' +
+      '</figure>' +
+      '<button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Volgende foto">' +
+      '<span aria-hidden="true">&rarr;</span>' +
+      '</button>' +
+      '</div>';
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function showSlide(index) {
+    if (!items.length) return;
+    currentIndex = (index + items.length) % items.length;
+    var item = items[currentIndex];
+    var img = lightbox.querySelector('.lightbox__img');
+    var caption = lightbox.querySelector('.lightbox__caption');
+    img.src = item.src;
+    img.alt = item.alt;
+    caption.textContent = item.caption;
+
+    var prevBtn = lightbox.querySelector('.lightbox__nav--prev');
+    var nextBtn = lightbox.querySelector('.lightbox__nav--next');
+    var hideNav = items.length <= 1;
+    prevBtn.hidden = hideNav;
+    nextBtn.hidden = hideNav;
+  }
+
+  function openLightbox(index) {
+    lastFocus = document.activeElement;
+    showSlide(index);
+    lightbox.hidden = false;
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    lightbox.querySelector('.lightbox__close').focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function bindLightbox() {
+    lightbox.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+    lightbox.querySelector('.lightbox__backdrop').addEventListener('click', closeLightbox);
+    lightbox.querySelector('.lightbox__nav--prev').addEventListener('click', function () {
+      showSlide(currentIndex - 1);
+    });
+    lightbox.querySelector('.lightbox__nav--next').addEventListener('click', function () {
+      showSlide(currentIndex + 1);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
+      if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+    });
+  }
+
+  function initBento() {
+    var root = document.getElementById('werk-bento');
+    var data = window.AMA_BENTO;
+    if (!root || !data || !data.groups) return;
+
+    items = [];
+    data.groups.forEach(function (group) {
+      group.items.forEach(function (item) {
+        items.push(item);
+      });
+    });
+
+    var index = 0;
+    var html = '';
+
+    html += renderBlock(data.groups[0], index);
+    index += data.groups[0].items.length;
+
+    html += '<div class="bento__row">';
+    html += renderBlock(data.groups[1], index);
+    index += data.groups[1].items.length;
+    html += renderBlock(data.groups[2], index);
+    html += '</div>';
+
+    root.innerHTML = html;
+
+    root.addEventListener('click', function (e) {
+      var trigger = e.target.closest('.bento__trigger');
+      if (!trigger) return;
+      openLightbox(parseInt(trigger.dataset.index, 10));
+    });
+
+    if (!document.getElementById('bento-lightbox')) {
+      lightbox = createLightbox();
+      bindLightbox();
+    } else {
+      lightbox = document.getElementById('bento-lightbox');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initBento);
 })();

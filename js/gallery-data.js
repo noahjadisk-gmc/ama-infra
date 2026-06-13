@@ -1,29 +1,24 @@
-window.AMA_GALLERY = {
-  tabs: [
+window.AMA_BENTO = {
+  groups: [
     {
-      id: 'aanleg',
       label: 'Aanleg',
-      title: 'Aanleg van glasvezeltrajecten',
-      text: 'Zorgvuldig voorbereid grondwerk, duidelijke kabelrouting en nette uitvoering op locatie.',
-      bullets: [],
-      images: [
+      layout: '1',
+      items: [
         {
           src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
           alt: 'Glasvezel aanlegwerk in Amsterdam',
           caption: 'Aanleg / straatwerk',
+          featured: true,
         },
       ],
     },
     {
-      id: 'installatie',
       label: 'Installatie',
-      title: 'Installatie en huisaansluitingen',
-      text: 'Van straat tot pand wordt de aansluiting voorbereid, uitgevoerd en gecontroleerd.',
-      bullets: [],
-      images: [
+      layout: '2',
+      items: [
         {
           src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
-          alt: 'Huisaansluiting glasvezel',
+          alt: 'Huisaansluiting glasvezel met kabelhaspel',
           caption: 'Installatie / huisaansluiting',
         },
         {
@@ -34,15 +29,12 @@ window.AMA_GALLERY = {
       ],
     },
     {
-      id: 'kabelschade',
-      label: 'Kabelschade oplossen',
-      title: 'Kabelschade en storingen',
-      text: 'De situatie wordt onderzocht, het probleem gelokaliseerd en gericht hersteld.',
-      bullets: [],
-      images: [
+      label: 'Kabelschade',
+      layout: '3',
+      items: [
         {
           src: 'images/ama/kabelschade/kabelschade-01-overzicht-straatwerk.jpg',
-          alt: 'Kabelschade herstelwerkzaamheden',
+          alt: 'Kabelschade herstelwerkzaamheden overzicht',
           caption: 'Kabelschade / herstel',
         },
         {
@@ -52,7 +44,7 @@ window.AMA_GALLERY = {
         },
         {
           src: 'images/ama/kabelschade/kabelschade-03-detail-oranje-kabels.jpg',
-          alt: 'Detail kabelschade herstel',
+          alt: 'Detail kabelschade herstel oranje kabels',
           caption: 'Kabelschade / herstel',
         },
       ],
