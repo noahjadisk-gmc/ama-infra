@@ -1,71 +1,129 @@
 (function () {
   'use strict';
 
-  var items = [];
-  var currentIndex = 0;
+  var groups = [];
+  var activeGroup = 0;
+  var activeIndex = 0;
   var lightbox = null;
   var lastFocus = null;
+  var root = null;
 
-  function renderPhoto(item, index) {
-    var badge = item.featured
-      ? '<span class="bento__badge">Werk op locatie · Amsterdam</span>'
-      : '';
+  function flatItems() {
+    var items = [];
+    groups.forEach(function (group) {
+      group.items.forEach(function (item) {
+        items.push(item);
+      });
+    });
+    return items;
+  }
 
-    var featuredClass = item.featured ? ' bento__cell--featured' : '';
+  function globalIndex(groupIdx, itemIdx) {
+    var index = 0;
+    for (var g = 0; g < groupIdx; g++) {
+      index += groups[g].items.length;
+    }
+    return index + itemIdx;
+  }
+
+  function renderTabs() {
+    return groups
+      .map(function (group, i) {
+        return (
+          '<button type="button" class="gallery__tab' +
+          (i === activeGroup ? ' is-active' : '') +
+          '" role="tab" aria-selected="' +
+          (i === activeGroup) +
+          '" aria-controls="gallery-panel-' +
+          i +
+          '" id="gallery-tab-' +
+          i +
+          '" data-group="' +
+          i +
+          '">' +
+          '<span class="gallery__tab-dot" aria-hidden="true"></span>' +
+          group.label +
+          '</button>'
+        );
+      })
+      .join('');
+  }
+
+  function renderFilmstrip(groupIdx) {
+    var group = groups[groupIdx];
+    return group.items
+      .map(function (item, i) {
+        return (
+          '<button type="button" class="gallery__thumb' +
+          (i === activeIndex ? ' is-active' : '') +
+          '" data-group="' +
+          groupIdx +
+          '" data-index="' +
+          i +
+          '" aria-label="' +
+          item.caption +
+          '">' +
+          '<img src="' +
+          item.src +
+          '" alt="" loading="lazy" width="320" height="180">' +
+          '</button>'
+        );
+      })
+      .join('');
+  }
+
+  function renderStage() {
+    var group = groups[activeGroup];
+    var item = group.items[activeIndex];
 
     return (
-      '<figure class="bento__cell bento__cell--photo' +
-      featuredClass +
+      '<div class="gallery__stage" id="gallery-panel-' +
+      activeGroup +
+      '" role="tabpanel" aria-labelledby="gallery-tab-' +
+      activeGroup +
       '">' +
-      badge +
-      '<button type="button" class="bento__trigger" data-index="' +
-      index +
+      '<figure class="gallery__main">' +
+      '<button type="button" class="gallery__zoom" data-lightbox="' +
+      globalIndex(activeGroup, activeIndex) +
       '" aria-label="Vergroot: ' +
       item.caption +
       '">' +
-      '<img class="bento__img" src="' +
+      '<img class="gallery__main-img" src="' +
       item.src +
       '" alt="' +
       item.alt +
-      '" loading="lazy" width="1600" height="900">' +
+      '" width="1600" height="900">' +
       '</button>' +
-      '<figcaption class="bento__meta">' +
-      '<span class="bento__caption-accent" aria-hidden="true"></span>' +
-      '<span class="bento__label">' +
+      '<figcaption class="gallery__caption">' +
+      '<span class="gallery__caption-accent" aria-hidden="true"></span>' +
       item.caption +
-      '</span>' +
       '</figcaption>' +
-      '</figure>'
+      '</figure>' +
+      '<div class="gallery__filmstrip" role="list" aria-label="Miniaturen">' +
+      renderFilmstrip(activeGroup) +
+      '</div>' +
+      '</div>'
     );
   }
 
-  function renderBlock(group, startIndex) {
-    var photos = group.items
-      .map(function (item, i) {
-        return renderPhoto(item, startIndex + i);
-      })
-      .join('');
-
-    return (
-      '<section class="bento-block" aria-label="' +
-      group.label +
-      '">' +
-      '<h3 class="bento-block__label">' +
-      group.label +
-      '</h3>' +
-      '<div class="bento-block__grid bento-block__grid--' +
-      group.layout +
-      '">' +
-      photos +
+  function render() {
+    root.innerHTML =
+      '<div class="gallery__tabs" role="tablist" aria-label="Categorieën">' +
+      renderTabs() +
       '</div>' +
-      '</section>'
-    );
+      renderStage();
+  }
+
+  function setActive(groupIdx, itemIdx) {
+    activeGroup = groupIdx;
+    activeIndex = itemIdx;
+    render();
   }
 
   function createLightbox() {
     var el = document.createElement('div');
     el.className = 'lightbox';
-    el.id = 'bento-lightbox';
+    el.id = 'gallery-lightbox';
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-modal', 'true');
     el.setAttribute('aria-label', 'Vergrote foto');
@@ -91,34 +149,30 @@
     return el;
   }
 
-  function showSlide(index) {
-    if (!items.length) return;
-    currentIndex = (index + items.length) % items.length;
-    var item = items[currentIndex];
-    var img = lightbox.querySelector('.lightbox__img');
-    var caption = lightbox.querySelector('.lightbox__caption');
-    img.src = item.src;
-    img.alt = item.alt;
-    caption.textContent = item.caption;
+  var lbIndex = 0;
 
-    var prevBtn = lightbox.querySelector('.lightbox__nav--prev');
-    var nextBtn = lightbox.querySelector('.lightbox__nav--next');
+  function showSlide(index) {
+    var items = flatItems();
+    if (!items.length) return;
+    lbIndex = (index + items.length) % items.length;
+    var item = items[lbIndex];
+    lightbox.querySelector('.lightbox__img').src = item.src;
+    lightbox.querySelector('.lightbox__img').alt = item.alt;
+    lightbox.querySelector('.lightbox__caption').textContent = item.caption;
     var hideNav = items.length <= 1;
-    prevBtn.hidden = hideNav;
-    nextBtn.hidden = hideNav;
+    lightbox.querySelector('.lightbox__nav--prev').hidden = hideNav;
+    lightbox.querySelector('.lightbox__nav--next').hidden = hideNav;
   }
 
   function openLightbox(index) {
     lastFocus = document.activeElement;
     showSlide(index);
     lightbox.hidden = false;
-    lightbox.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     lightbox.querySelector('.lightbox__close').focus();
   }
 
   function closeLightbox() {
-    lightbox.classList.remove('is-open');
     lightbox.hidden = true;
     document.body.style.overflow = '';
     if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -128,59 +182,59 @@
     lightbox.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
     lightbox.querySelector('.lightbox__backdrop').addEventListener('click', closeLightbox);
     lightbox.querySelector('.lightbox__nav--prev').addEventListener('click', function () {
-      showSlide(currentIndex - 1);
+      showSlide(lbIndex - 1);
     });
     lightbox.querySelector('.lightbox__nav--next').addEventListener('click', function () {
-      showSlide(currentIndex + 1);
+      showSlide(lbIndex + 1);
     });
-
     document.addEventListener('keydown', function (e) {
       if (lightbox.hidden) return;
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
-      if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+      if (e.key === 'ArrowLeft') showSlide(lbIndex - 1);
+      if (e.key === 'ArrowRight') showSlide(lbIndex + 1);
     });
   }
 
-  function initBento() {
-    var root = document.getElementById('werk-bento');
+  function bindGallery() {
+    root.addEventListener('click', function (e) {
+      var tab = e.target.closest('.gallery__tab');
+      if (tab) {
+        setActive(parseInt(tab.dataset.group, 10), 0);
+        return;
+      }
+
+      var thumb = e.target.closest('.gallery__thumb');
+      if (thumb) {
+        setActive(parseInt(thumb.dataset.group, 10), parseInt(thumb.dataset.index, 10));
+        return;
+      }
+
+      var zoom = e.target.closest('.gallery__zoom');
+      if (zoom) {
+        openLightbox(parseInt(zoom.dataset.lightbox, 10));
+      }
+    });
+  }
+
+  function initGallery() {
+    root = document.getElementById('werk-gallery');
     var data = window.AMA_BENTO;
     if (!root || !data || !data.groups) return;
 
-    items = [];
-    data.groups.forEach(function (group) {
-      group.items.forEach(function (item) {
-        items.push(item);
-      });
-    });
+    groups = data.groups;
+    activeGroup = 0;
+    activeIndex = 0;
 
-    var index = 0;
-    var html = '';
+    render();
+    bindGallery();
 
-    html += renderBlock(data.groups[0], index);
-    index += data.groups[0].items.length;
-
-    html += '<div class="bento__row">';
-    html += renderBlock(data.groups[1], index);
-    index += data.groups[1].items.length;
-    html += renderBlock(data.groups[2], index);
-    html += '</div>';
-
-    root.innerHTML = html;
-
-    root.addEventListener('click', function (e) {
-      var trigger = e.target.closest('.bento__trigger');
-      if (!trigger) return;
-      openLightbox(parseInt(trigger.dataset.index, 10));
-    });
-
-    if (!document.getElementById('bento-lightbox')) {
+    if (!document.getElementById('gallery-lightbox')) {
       lightbox = createLightbox();
       bindLightbox();
     } else {
-      lightbox = document.getElementById('bento-lightbox');
+      lightbox = document.getElementById('gallery-lightbox');
     }
   }
 
-  document.addEventListener('DOMContentLoaded', initBento);
+  document.addEventListener('DOMContentLoaded', initGallery);
 })();
