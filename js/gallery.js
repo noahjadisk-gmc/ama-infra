@@ -30,6 +30,7 @@
       '" loading="lazy" width="1600" height="900">' +
       '</button>' +
       '<figcaption class="bento__meta">' +
+      '<span class="bento__caption-accent" aria-hidden="true"></span>' +
       '<span class="bento__label">' +
       item.caption +
       '</span>' +

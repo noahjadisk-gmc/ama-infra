@@ -1,7 +1,16 @@
 (function () {
+  const header = document.querySelector('.header');
   const menuBtn = document.querySelector('.header__menu-btn');
   const mobileNav = document.getElementById('mobile-nav');
   const mobileLinks = mobileNav.querySelectorAll('.mobile-nav__link, .mobile-nav__cta a');
+
+  function updateHeaderScroll() {
+    if (!header) return;
+    header.classList.toggle('header--scrolled', window.scrollY > 6);
+  }
+
+  updateHeaderScroll();
+  window.addEventListener('scroll', updateHeaderScroll, { passive: true });
 
   function openMenu() {
     menuBtn.setAttribute('aria-expanded', 'true');

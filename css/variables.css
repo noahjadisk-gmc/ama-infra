@@ -14,7 +14,7 @@
   --line-strong: rgba(7, 26, 47, 0.18);
 
   --radius-sm: 4px;
-  --radius-md: 6px;
+  --radius-md: 7px;
   --radius-lg: 10px;
 
   --font: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -28,15 +28,16 @@
   --space-3xl: 3.5rem;
 
   --container: 73.75rem;
-  --header-h: 3.625rem;
+  --header-h: 4rem;
 
-  --section-pad-mobile: 3.5rem;
-  --section-pad-desktop: 5.25rem;
+  --section-pad-mobile: 4.5rem;
+  --section-pad-desktop: 5.625rem;
 
   --transition: 220ms ease;
   --transition-fade: 280ms ease;
-  --shadow-soft: 0 10px 24px rgba(7, 26, 47, 0.12);
-  --shadow-hover: 0 14px 32px rgba(19, 200, 255, 0.16);
+  --shadow-soft: 0 12px 28px rgba(7, 26, 47, 0.16);
+  --shadow-hover: 0 16px 36px rgba(22, 119, 255, 0.22);
+  --navy-deep: #0B2746;
   --accent-gradient: linear-gradient(90deg, var(--blue), var(--cyan));
   --node-glow: 0 0 0 3px rgba(19, 200, 255, 0.18);
 }
