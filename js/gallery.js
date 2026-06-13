@@ -41,7 +41,6 @@
           '" data-group="' +
           i +
           '">' +
-          '<span class="gallery__tab-dot" aria-hidden="true"></span>' +
           group.label +
           '</button>'
         );
@@ -82,6 +81,7 @@
       '" role="tabpanel" aria-labelledby="gallery-tab-' +
       activeGroup +
       '">' +
+      '<div class="gallery__split">' +
       '<figure class="gallery__main">' +
       '<button type="button" class="gallery__zoom" data-lightbox="' +
       globalIndex(activeGroup, activeIndex) +
@@ -99,6 +99,16 @@
       item.caption +
       '</figcaption>' +
       '</figure>' +
+      '<div class="gallery__info">' +
+      '<span class="gallery__info-accent" aria-hidden="true"></span>' +
+      '<h3 class="gallery__info-title">' +
+      group.title +
+      '</h3>' +
+      '<p class="gallery__info-text">' +
+      group.copy +
+      '</p>' +
+      '</div>' +
+      '</div>' +
       '<div class="gallery__filmstrip" role="list" aria-label="Miniaturen">' +
       renderFilmstrip(activeGroup) +
       '</div>' +

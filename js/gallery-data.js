@@ -2,19 +2,22 @@ window.AMA_BENTO = {
   groups: [
     {
       label: 'Aanleg',
-      layout: '1',
+      title: 'Aanleg van glasvezeltrajecten',
+      copy:
+        'Zorgvuldig voorbereid grondwerk, duidelijke kabelrouting en nette uitvoering op locatie.',
       items: [
         {
           src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
           alt: 'Glasvezel aanlegwerk in Amsterdam',
           caption: 'Aanleg / straatwerk',
-          featured: true,
         },
       ],
     },
     {
       label: 'Installatie',
-      layout: '2',
+      title: 'Installatie en huisaansluitingen',
+      copy:
+        'Van straat tot pand wordt de aansluiting voorbereid, uitgevoerd en gecontroleerd.',
       items: [
         {
           src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
@@ -29,8 +32,10 @@ window.AMA_BENTO = {
       ],
     },
     {
-      label: 'Kabelschade',
-      layout: '3',
+      label: 'Kabelschade oplossen',
+      title: 'Kabelschade en storingen',
+      copy:
+        'De situatie wordt onderzocht, het probleem gelokaliseerd en gericht hersteld.',
       items: [
         {
           src: 'images/ama/kabelschade/kabelschade-01-overzicht-straatwerk.jpg',
