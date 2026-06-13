@@ -61,12 +61,12 @@
     document.querySelectorAll('[data-contact="phone-value"]').forEach(function (el) {
       if (hasPhone()) {
         el.textContent = CONTACT.phoneLabel || CONTACT.phoneHref.replace(/^tel:/, '');
-        el.classList.remove('contact-detail__value--pending');
+        el.classList.remove('contact-aside__detail-value--pending');
         el.href = CONTACT.phoneHref;
         el.removeAttribute('aria-disabled');
       } else {
         el.textContent = CONTACT.phoneLabel || 'Nog toevoegen';
-        el.classList.add('contact-detail__value--pending');
+        el.classList.add('contact-aside__detail-value--pending');
         el.removeAttribute('href');
         el.setAttribute('aria-disabled', 'true');
       }

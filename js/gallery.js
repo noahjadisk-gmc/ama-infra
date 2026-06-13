@@ -30,7 +30,7 @@
     return groups
       .map(function (group, i) {
         return (
-          '<button type="button" class="gallery__tab' +
+          '<button type="button" class="gallery-editorial__tab' +
           (i === activeGroup ? ' is-active' : '') +
           '" role="tab" aria-selected="' +
           (i === activeGroup) +
@@ -53,7 +53,7 @@
     return group.items
       .map(function (item, i) {
         return (
-          '<button type="button" class="gallery__thumb' +
+          '<button type="button" class="gallery-editorial__thumb' +
           (i === activeIndex ? ' is-active' : '') +
           '" data-group="' +
           groupIdx +
@@ -76,40 +76,37 @@
     var item = group.items[activeIndex];
 
     return (
-      '<div class="gallery__stage" id="gallery-panel-' +
+      '<div class="gallery-editorial__stage" id="gallery-panel-' +
       activeGroup +
       '" role="tabpanel" aria-labelledby="gallery-tab-' +
       activeGroup +
       '">' +
-      '<div class="gallery__split">' +
-      '<figure class="gallery__main">' +
-      '<button type="button" class="gallery__zoom" data-lightbox="' +
+      '<figure class="gallery-editorial__hero">' +
+      '<button type="button" class="gallery-editorial__zoom" data-lightbox="' +
       globalIndex(activeGroup, activeIndex) +
       '" aria-label="Vergroot: ' +
       item.caption +
       '">' +
-      '<img class="gallery__main-img" src="' +
+      '<img class="gallery-editorial__main-img" src="' +
       item.src +
       '" alt="' +
       item.alt +
       '" width="1600" height="900">' +
       '</button>' +
-      '<figcaption class="gallery__caption">' +
-      '<span class="gallery__caption-accent" aria-hidden="true"></span>' +
+      '<figcaption class="gallery-editorial__caption">' +
+      '<span class="gallery-editorial__caption-line" aria-hidden="true"></span>' +
       item.caption +
       '</figcaption>' +
-      '</figure>' +
-      '<div class="gallery__info">' +
-      '<span class="gallery__info-accent" aria-hidden="true"></span>' +
-      '<h3 class="gallery__info-title">' +
+      '<div class="gallery-editorial__context">' +
+      '<h3 class="gallery-editorial__context-title">' +
       group.title +
       '</h3>' +
-      '<p class="gallery__info-text">' +
+      '<p class="gallery-editorial__context-text">' +
       group.copy +
       '</p>' +
       '</div>' +
-      '</div>' +
-      '<div class="gallery__filmstrip" role="list" aria-label="Miniaturen">' +
+      '</figure>' +
+      '<div class="gallery-editorial__filmstrip" role="list" aria-label="Miniaturen">' +
       renderFilmstrip(activeGroup) +
       '</div>' +
       '</div>'
@@ -118,7 +115,7 @@
 
   function render() {
     root.innerHTML =
-      '<div class="gallery__tabs" role="tablist" aria-label="Categorieën">' +
+      '<div class="gallery-editorial__tabs" role="tablist" aria-label="Categorieën">' +
       renderTabs() +
       '</div>' +
       renderStage();
@@ -207,19 +204,19 @@
 
   function bindGallery() {
     root.addEventListener('click', function (e) {
-      var tab = e.target.closest('.gallery__tab');
+      var tab = e.target.closest('.gallery-editorial__tab');
       if (tab) {
         setActive(parseInt(tab.dataset.group, 10), 0);
         return;
       }
 
-      var thumb = e.target.closest('.gallery__thumb');
+      var thumb = e.target.closest('.gallery-editorial__thumb');
       if (thumb) {
         setActive(parseInt(thumb.dataset.group, 10), parseInt(thumb.dataset.index, 10));
         return;
       }
 
-      var zoom = e.target.closest('.gallery__zoom');
+      var zoom = e.target.closest('.gallery-editorial__zoom');
       if (zoom) {
         openLightbox(parseInt(zoom.dataset.lightbox, 10));
       }

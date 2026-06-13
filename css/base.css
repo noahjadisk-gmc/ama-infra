@@ -14,7 +14,7 @@ html {
 
 body {
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--ink);
   background: var(--sand);
@@ -53,19 +53,12 @@ ol {
   width: 100%;
   max-width: var(--container);
   margin-inline: auto;
-  padding-inline: var(--space-lg);
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding-inline: var(--space-xl);
-  }
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
 }
 
 .section {
   --section-pad: var(--section-pad-mobile);
-  padding-top: var(--section-pad);
-  padding-bottom: var(--section-pad);
+  padding-block: var(--section-pad);
   scroll-margin-top: var(--scroll-offset);
 }
 
@@ -73,16 +66,6 @@ ol {
   .section {
     --section-pad: var(--section-pad-desktop);
   }
-}
-
-/* Eén ritmische tussenruimte tussen opeenvolgende blokken */
-.hero + .section,
-.section + .section {
-  padding-top: calc(var(--section-pad) * 0.45);
-}
-
-.section--contact {
-  padding-bottom: calc(var(--section-pad) * 0.55);
 }
 
 .section--sand {
@@ -97,33 +80,48 @@ ol {
   background: var(--white);
 }
 
-.section__header {
-  margin-bottom: var(--space-xl);
+.section--flush-top {
+  padding-top: 0;
 }
 
-.section__header--compact {
-  margin-bottom: var(--space-lg);
+.section__eyebrow {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--infra-green);
 }
 
 .section__title {
-  font-size: clamp(1.625rem, 3.5vw, 2.125rem);
+  font-size: clamp(2.375rem, 5vw, 3.5rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
   color: var(--navy);
-  line-height: 1.12;
+  max-width: 16ch;
 }
 
-.section__title--lg {
-  font-size: clamp(1.75rem, 4vw, 2.375rem);
-  letter-spacing: -0.035em;
+.section__title--sm {
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  max-width: 22ch;
 }
 
-.section__intro {
-  margin-top: var(--space-sm);
+.section__lead {
+  margin-top: var(--space-heading-sub);
   max-width: 38rem;
+  font-size: clamp(1.0625rem, 1.6vw, 1.3125rem);
+  line-height: 1.55;
   color: var(--text-secondary);
-  font-size: 1.0625rem;
-  line-height: 1.65;
+}
+
+.section__head {
+  margin-bottom: var(--space-title-content);
+}
+
+.section__head--tight {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .skip-link {
@@ -145,40 +143,10 @@ ol {
   transform: translateY(0);
 }
 
-.section__label {
-  display: inline-block;
-  margin-bottom: var(--space-sm);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--infra-green);
-}
-
-.section--mist .section__label,
-.section--sand .section__label {
-  color: var(--deep-green);
-}
-
-/* Witte kaarten op gekleurde secties; inset-kaarten op witte secties */
-.section--mist .capabilities-panel,
-.section--mist .brand-panel,
-.section--sand .flow-panel,
-.section--contact .contact-form-panel {
-  background: var(--surface-raised);
-  box-shadow: var(--shadow-surface-raised);
-  border-color: var(--line-strong);
-}
-
-.section--white .gallery-wrap,
-.section--white .experience-panel {
-  background: var(--surface-inset);
-  box-shadow: var(--shadow-surface-raised);
-  border-color: var(--line-strong);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 
   *,
   *::before,

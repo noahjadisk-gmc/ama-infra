@@ -1,6 +1,6 @@
 (function () {
-  const header = document.querySelector('.header');
-  const menuBtn = document.querySelector('.header__menu-btn');
+  const header = document.querySelector('.site-header');
+  const menuBtn = document.querySelector('.site-header__menu');
   const mobileNav = document.getElementById('mobile-nav');
   const mobileLinks = mobileNav.querySelectorAll(
     '.mobile-nav__link, .mobile-nav__cta a, .mobile-nav__call'
@@ -47,7 +47,7 @@
   var sectionEls = Array.prototype.slice.call(
     document.querySelectorAll('main section[id], main .hero')
   );
-  var navLinks = document.querySelectorAll('.header__nav-link, .mobile-nav__link');
+  var navLinks = document.querySelectorAll('.nav-link, .mobile-nav__link');
 
   if (sectionEls.length && navLinks.length && 'IntersectionObserver' in window) {
     var linkMap = {};
