@@ -1,13 +1,4 @@
 /* Werk in beeld — aansluitend op hero */
-.werk__backdrop {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 50% at 88% 12%, rgba(19, 200, 255, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 45% at 8% 88%, rgba(22, 119, 255, 0.08) 0%, transparent 52%);
-  pointer-events: none;
-}
-
 .werk__container {
   position: relative;
   z-index: 1;
@@ -142,22 +133,6 @@
 
 .bento-block__grid--1 {
   grid-template-columns: 1fr;
-  position: relative;
-}
-
-.bento-block__grid--1::after {
-  content: "";
-  position: absolute;
-  inset: auto 8% -6% 28%;
-  height: 38%;
-  background: radial-gradient(circle, rgba(19, 200, 255, 0.2) 0%, transparent 68%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.bento-block__grid--1 .bento__cell {
-  position: relative;
-  z-index: 1;
 }
 
 .bento-block__grid--2 {
@@ -308,7 +283,7 @@
   inset: auto 0 0 0;
   z-index: 1;
   padding: var(--space-md) var(--space-md) var(--space-sm);
-  background: linear-gradient(to top, rgba(7, 26, 47, 0.88) 0%, transparent 100%);
+  background: var(--caption-overlay);
   pointer-events: none;
 }
 

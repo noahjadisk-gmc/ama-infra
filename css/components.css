@@ -221,7 +221,7 @@
   padding: var(--space-md) var(--space-md) var(--space-sm);
   color: rgba(255, 255, 255, 0.92);
   border-top: none;
-  background: linear-gradient(to top, rgba(7, 26, 47, 0.88) 0%, transparent 100%);
+  background: var(--caption-overlay);
   pointer-events: none;
 }
 
@@ -406,15 +406,6 @@
 }
 
 /* Werkwijze / process flow */
-.werkwijze__backdrop {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 65% 50% at 10% 15%, rgba(19, 200, 255, 0.09) 0%, transparent 55%),
-    radial-gradient(ellipse 55% 45% at 92% 80%, rgba(0, 169, 157, 0.08) 0%, transparent 52%);
-  pointer-events: none;
-}
-
 .werkwijze__container {
   position: relative;
   z-index: 1;
@@ -770,113 +761,6 @@
 @media (prefers-reduced-motion: reduce) {
   .trust-row:hover,
   .trust-row:hover .trust-row__num {
-    transform: none;
-  }
-}
-
-/* Contact list */
-.contact-list {
-  list-style: none;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.contact-row {
-  display: grid;
-  grid-template-columns: 2.75rem 1fr;
-  gap: var(--space-md);
-  align-items: start;
-  padding: 0.75rem var(--space-md);
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  transition:
-    background var(--transition),
-    border-color var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition);
-}
-
-.contact-row__num {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
-  color: var(--navy);
-  background: var(--white);
-  border: 2px solid rgba(22, 119, 255, 0.2);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 4px rgba(19, 200, 255, 0.08),
-    0 6px 16px rgba(7, 26, 47, 0.06);
-  transition:
-    border-color var(--transition),
-    box-shadow var(--transition),
-    transform var(--transition),
-    color var(--transition);
-}
-
-.contact-row:first-child .contact-row__num {
-  border-color: var(--blue);
-  color: var(--blue);
-  box-shadow:
-    0 0 0 5px rgba(19, 200, 255, 0.12),
-    0 8px 20px rgba(22, 119, 255, 0.12);
-}
-
-.contact-row:last-child .contact-row__num {
-  border-color: rgba(0, 169, 157, 0.35);
-}
-
-.contact-row__body {
-  display: grid;
-  gap: 0.15rem;
-  padding-top: 0.35rem;
-}
-
-.contact-row__label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--steel);
-}
-
-.contact-row__value {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--navy);
-  line-height: 1.45;
-  transition: color var(--transition);
-}
-
-a.contact-row__value:hover {
-  color: var(--blue);
-}
-
-.contact-row:hover {
-  background: rgba(255, 255, 255, 0.82);
-  border-color: rgba(22, 119, 255, 0.12);
-  box-shadow: 0 8px 22px rgba(7, 26, 47, 0.05);
-  transform: translateX(3px);
-}
-
-.contact-row:hover .contact-row__num {
-  border-color: var(--cyan);
-  color: var(--blue);
-  box-shadow:
-    0 0 0 5px rgba(19, 200, 255, 0.14),
-    0 8px 22px rgba(22, 119, 255, 0.12);
-  transform: scale(1.04);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact-row:hover,
-  .contact-row:hover .contact-row__num {
     transform: none;
   }
 }
