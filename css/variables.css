@@ -1,16 +1,17 @@
 :root {
   --paper: #F7F9FB;
   --white: #FFFFFF;
-  --ink: #0B1220;
-  --navy: #0B1F33;
+  --ink: #07111F;
+  --navy: #071A2F;
   --blue: #1677FF;
-  --steel: #667085;
-  --line: #D9E0E8;
-  --soft-line: rgba(11, 31, 51, 0.10);
+  --blue-soft: #E8F1FF;
+  --steel: #5F6B7A;
+  --line: rgba(7, 17, 31, 0.10);
+  --line-strong: rgba(7, 17, 31, 0.16);
 
   --radius-sm: 4px;
   --radius-md: 6px;
-  --radius-lg: 6px;
+  --radius-lg: 10px;
 
   --font: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
@@ -19,13 +20,17 @@
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
-  --space-2xl: 2.5rem;
-  --space-3xl: 3.25rem;
-  --space-4xl: 4rem;
+  --space-2xl: 2.75rem;
+  --space-3xl: 3.5rem;
 
-  --container: 75rem;
-  --header-h: 3.5rem;
+  --container: 73.75rem;
+  --header-h: 3.625rem;
 
-  --transition: 180ms ease;
-  --transition-fade: 240ms ease;
+  --section-pad-mobile: 3.5rem;
+  --section-pad-desktop: 5.5rem;
+
+  --transition: 220ms ease;
+  --transition-fade: 280ms ease;
+  --shadow-soft: 0 10px 24px rgba(7, 26, 47, 0.12);
+  --shadow-hover: 0 14px 32px rgba(22, 119, 255, 0.18);
 }

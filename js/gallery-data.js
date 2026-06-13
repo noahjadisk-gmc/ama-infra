@@ -4,12 +4,8 @@ window.AMA_GALLERY = {
       id: 'aanleg',
       label: 'Aanleg',
       title: 'Aanleg van glasvezeltrajecten',
-      text: 'Werkzaamheden aan glasvezel beginnen met een zorgvuldige voorbereiding, duidelijke kabelrouting en net uitgevoerd grondwerk.',
-      bullets: [
-        'Sleufwerk en kabelrouting',
-        'Voorbereiding van trajecten',
-        'Werkzaamheden in straat en omgeving',
-      ],
+      text: 'Zorgvuldig voorbereid grondwerk, duidelijke kabelrouting en nette uitvoering op locatie.',
+      bullets: [],
       images: [
         {
           src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
@@ -22,12 +18,8 @@ window.AMA_GALLERY = {
       id: 'installatie',
       label: 'Installatie',
       title: 'Installatie en huisaansluitingen',
-      text: 'Van straat tot pand wordt de aansluiting zorgvuldig voorbereid en uitgevoerd, met aandacht voor nette afwerking.',
-      bullets: [
-        'Aansluiting richting woning of pand',
-        'Kabelhaspel en invoertraject',
-        'Controle van de aansluiting',
-      ],
+      text: 'Van straat tot pand wordt de aansluiting voorbereid, uitgevoerd en gecontroleerd.',
+      bullets: [],
       images: [
         {
           src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
@@ -45,12 +37,8 @@ window.AMA_GALLERY = {
       id: 'kabelschade',
       label: 'Kabelschade oplossen',
       title: 'Kabelschade en storingen',
-      text: 'Bij kabelschade of storing wordt de situatie bekeken, het probleem gelokaliseerd en gericht gewerkt aan herstel.',
-      bullets: [
-        'Kabelschade onderzoeken',
-        'Herstelpunten vrijleggen',
-        'Verbinding controleren',
-      ],
+      text: 'De situatie wordt onderzocht, het probleem gelokaliseerd en gericht hersteld.',
+      bullets: [],
       images: [
         {
           src: 'images/ama/kabelschade/kabelschade-01-overzicht-straatwerk.jpg',

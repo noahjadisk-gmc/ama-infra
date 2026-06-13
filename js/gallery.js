@@ -15,7 +15,7 @@
     var titleEl = root.querySelector('.gallery__content-title');
     var textEl = root.querySelector('.gallery__content-text');
     var bulletsEl = root.querySelector('.gallery__content-bullets');
-    var thumbsEl = root.querySelector('.gallery__thumbs');
+    var thumbsEl = root.querySelector('.gallery__filmstrip');
 
     function renderTabs() {
       tabsEl.innerHTML = data.tabs
@@ -79,16 +79,18 @@
       titleEl.textContent = tab.title;
       textEl.textContent = tab.text;
 
-      bulletsEl.innerHTML = tab.bullets
-        .map(function (item) {
-          return (
-            '<li class="gallery__bullet">' +
-            '<span class="gallery__bullet-marker" aria-hidden="true"></span>' +
-            item +
-            '</li>'
-          );
-        })
-        .join('');
+      bulletsEl.innerHTML = tab.bullets.length
+        ? tab.bullets
+            .map(function (item) {
+              return (
+                '<li class="gallery__bullet">' +
+                '<span class="gallery__bullet-marker" aria-hidden="true"></span>' +
+                item +
+                '</li>'
+              );
+            })
+            .join('')
+        : '';
 
       renderThumbs();
       renderTabs();
