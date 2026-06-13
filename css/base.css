@@ -71,8 +71,29 @@ ol {
   }
 }
 
-.section--alt {
+.section--alt,
+.section--paper {
   background: var(--paper);
+}
+
+.section--sky {
+  background: var(--sky-soft);
+}
+
+.section--mint {
+  background: var(--mint-soft);
+}
+
+.section--warm {
+  background: var(--warm);
+}
+
+.section--white {
+  background: var(--white);
+}
+
+.section--brand {
+  padding-block: 0;
 }
 
 .section--compact {

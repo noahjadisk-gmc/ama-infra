@@ -11,10 +11,9 @@
 
     var tabsEl = root.querySelector('.gallery__tabs');
     var mainImg = root.querySelector('.gallery__main-img');
-    var mainCaption = root.querySelector('.gallery__main-caption');
+    var mainLabel = root.querySelector('.gallery__main-label');
     var titleEl = root.querySelector('.gallery__content-title');
     var textEl = root.querySelector('.gallery__content-text');
-    var bulletsEl = root.querySelector('.gallery__content-bullets');
     var thumbsEl = root.querySelector('.gallery__filmstrip');
 
     function renderTabs() {
@@ -72,25 +71,12 @@
       window.setTimeout(function () {
         mainImg.src = img.src;
         mainImg.alt = img.alt;
-        mainCaption.textContent = img.caption;
+        mainLabel.textContent = img.caption;
         mainImg.classList.remove('is-fading');
       }, 120);
 
       titleEl.textContent = tab.title;
       textEl.textContent = tab.text;
-
-      bulletsEl.innerHTML = tab.bullets.length
-        ? tab.bullets
-            .map(function (item) {
-              return (
-                '<li class="gallery__bullet">' +
-                '<span class="gallery__bullet-marker" aria-hidden="true"></span>' +
-                item +
-                '</li>'
-              );
-            })
-            .join('')
-        : '';
 
       renderThumbs();
       renderTabs();

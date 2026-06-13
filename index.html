@@ -16,7 +16,9 @@
 
   <header class="header" role="banner">
     <div class="container header__inner">
-      <a href="#" class="header__logo" aria-label="AMA Infra — naar boven">AMA Infra</a>
+      <a href="#" class="header__logo" aria-label="AMA Infra — naar boven">
+        <span class="header__logo-text">AMA Infra</span>
+      </a>
 
       <nav class="header__nav" aria-label="Hoofdnavigatie">
         <a href="#diensten" class="header__nav-link">Werkzaamheden</a>
@@ -56,7 +58,7 @@
 
   <main>
 
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero section--warm" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
           <div class="hero__copy">
@@ -74,27 +76,37 @@
             </div>
           </div>
 
-          <figure class="photo-frame photo-frame--hero hero__visual">
-            <img
-              class="photo-frame__img"
-              src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
-              alt="Glasvezel aanlegwerk op locatie in Amsterdam"
-              width="800"
-              height="600"
-            >
-            <figcaption class="photo-frame__caption">
-              Werk op locatie / Amsterdam en omgeving
-            </figcaption>
-          </figure>
+          <div class="hero__visual-wrap">
+            <div class="hero__visual-bg" aria-hidden="true"></div>
+            <figure class="photo-frame photo-frame--hero hero__visual">
+              <img
+                class="photo-frame__img"
+                src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
+                alt="Glasvezel aanlegwerk op locatie in Amsterdam"
+                width="800"
+                height="600"
+              >
+              <figcaption class="photo-frame__caption">
+                <span class="photo-frame__caption-accent" aria-hidden="true"></span>
+                Werk op locatie / Amsterdam en omgeving
+              </figcaption>
+            </figure>
+          </div>
 
           <p class="hero__trustline" aria-label="Werkgebieden">
-            Aanleg · Huisaansluitingen · Kabelschade · Elektrotechniek
+            <span>Aanleg</span>
+            <span class="hero__trustline-dot" aria-hidden="true"></span>
+            <span>Huisaansluitingen</span>
+            <span class="hero__trustline-dot" aria-hidden="true"></span>
+            <span>Kabelschade</span>
+            <span class="hero__trustline-dot" aria-hidden="true"></span>
+            <span>Elektrotechniek</span>
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section section--alt" id="diensten" aria-labelledby="diensten-title">
+    <section class="section section--sky" id="diensten" aria-labelledby="diensten-title">
       <div class="container">
         <div class="capabilities-layout">
           <div class="capabilities-intro">
@@ -104,7 +116,9 @@
             </p>
           </div>
 
-          <div class="capability-list">
+          <div class="capabilities-list-wrap">
+            <span class="capabilities-accent" aria-hidden="true"></span>
+            <div class="capability-list">
             <article class="capability-row">
               <h3 class="capability-row__title">Glasvezel aanleggen</h3>
               <p class="capability-row__desc">
@@ -132,12 +146,13 @@
                 Ondersteuning bij elektrotechnische bouwinstallaties en technische werkzaamheden op locatie.
               </p>
             </article>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--werk" id="werk" aria-labelledby="werk-title">
+    <section class="section section--werk section--warm" id="werk" aria-labelledby="werk-title">
       <div class="container">
         <header class="section__header section__header--compact">
           <h2 id="werk-title" class="section__title section__title--lg">Werk in beeld</h2>
@@ -146,37 +161,39 @@
           </p>
         </header>
 
-        <div class="gallery" id="werk-gallery" role="region" aria-label="Projectgalerij">
-          <div class="gallery__tabs" role="tablist" aria-label="Werk categorieën"></div>
+        <div class="gallery-wrap">
+          <div class="gallery" id="werk-gallery" role="region" aria-label="Projectgalerij">
+            <div class="gallery__tabs" role="tablist" aria-label="Werk categorieën"></div>
 
-          <div class="gallery__stage" id="gallery-panel" role="tabpanel">
-            <div class="gallery__visual">
-              <figure class="gallery__main">
-                <img
-                  class="gallery__main-img"
-                  src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
-                  alt="Glasvezel aanlegwerk in Amsterdam"
-                  width="800"
-                  height="600"
-                >
-                <figcaption class="gallery__main-caption">Glasvezel aanleg / Amsterdam en omgeving</figcaption>
-              </figure>
-              <div class="gallery__filmstrip" aria-label="Afbeeldingen"></div>
-            </div>
+            <div class="gallery__stage" id="gallery-panel" role="tabpanel">
+              <div class="gallery__visual">
+                <figure class="gallery__main">
+                  <img
+                    class="gallery__main-img"
+                    src="images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg"
+                    alt="Glasvezel aanlegwerk in Amsterdam"
+                    width="800"
+                    height="600"
+                  >
+                  <figcaption class="gallery__main-label">Aanleg / straatwerk</figcaption>
+                </figure>
+                <div class="gallery__filmstrip" aria-label="Afbeeldingen"></div>
+              </div>
 
-            <div class="gallery__panel">
-              <h3 class="gallery__content-title">Aanleg van glasvezeltrajecten</h3>
-              <p class="gallery__content-text">
-                Zorgvuldig voorbereid grondwerk, duidelijke kabelrouting en nette uitvoering op locatie.
-              </p>
-              <ul class="gallery__content-bullets" hidden></ul>
+              <div class="gallery__panel">
+                <span class="gallery__panel-accent" aria-hidden="true"></span>
+                <h3 class="gallery__content-title">Aanleg van glasvezeltrajecten</h3>
+                <p class="gallery__content-text">
+                  Zorgvuldig voorbereid grondwerk, duidelijke kabelrouting en nette uitvoering op locatie.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--alt" id="werkwijze" aria-labelledby="werkwijze-title">
+    <section class="section section--white" id="werkwijze" aria-labelledby="werkwijze-title">
       <div class="container">
         <header class="section__header section__header--compact">
           <h2 id="werkwijze-title" class="section__title">Van melding tot oplevering</h2>
@@ -216,16 +233,19 @@
       </div>
     </section>
 
-    <section class="section" id="over" aria-labelledby="over-title">
-      <div class="container">
-        <div class="about-split">
-          <div>
-            <h2 id="over-title" class="about-split__title">Nuchter vakwerk, professioneel uitgevoerd</h2>
-            <p class="about-split__text">
+    <section class="section section--brand" id="over" aria-labelledby="over-title">
+      <div class="brand-split">
+        <div class="brand-split__navy">
+          <div class="brand-split__inner">
+            <h2 id="over-title" class="brand-split__title">Nuchter vakwerk, professioneel uitgevoerd</h2>
+            <p class="brand-split__text">
               AMA Infra werkt lokaal in Amsterdam en omgeving aan glasvezel en elektrotechnische installaties. De focus ligt op nette uitvoering, duidelijke communicatie en praktische oplossingen op locatie.
             </p>
           </div>
+          <span class="brand-split__accent" aria-hidden="true"></span>
+        </div>
 
+        <div class="brand-split__trust">
           <div class="trust-panel">
             <div class="line-check">
               <span class="line-check__marker" aria-hidden="true"></span>
@@ -252,7 +272,7 @@
       </div>
     </section>
 
-    <section class="section section--alt section--compact" aria-labelledby="bedrijf-title">
+    <section class="section section--paper section--compact" aria-labelledby="bedrijf-title">
       <div class="container">
         <header class="section__header section__header--compact">
           <h2 id="bedrijf-title" class="section__title">Officiële bedrijfsgegevens</h2>
@@ -332,7 +352,7 @@
 
   </main>
 
-  <footer class="footer" role="contentinfo">
+  <footer class="footer footer--navy" role="contentinfo">
     <div class="container">
       <p class="footer__brand">AMA Infra</p>
       <p class="footer__tagline">Glasvezel en elektrotechnische installaties.</p>

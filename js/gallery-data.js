@@ -10,7 +10,7 @@ window.AMA_GALLERY = {
         {
           src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
           alt: 'Glasvezel aanlegwerk in Amsterdam',
-          caption: 'Glasvezel aanleg / Amsterdam en omgeving',
+          caption: 'Aanleg / straatwerk',
         },
       ],
     },
@@ -24,12 +24,12 @@ window.AMA_GALLERY = {
         {
           src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
           alt: 'Huisaansluiting glasvezel',
-          caption: 'Huisaansluiting glasvezel',
+          caption: 'Installatie / huisaansluiting',
         },
         {
           src: 'images/ama/installatie/installatie-02-woning-aansluiting.jpg',
           alt: 'Glasvezel installatie bij woning',
-          caption: 'Aansluiting richting pand',
+          caption: 'Installatie / huisaansluiting',
         },
       ],
     },
@@ -43,17 +43,17 @@ window.AMA_GALLERY = {
         {
           src: 'images/ama/kabelschade/kabelschade-01-overzicht-straatwerk.jpg',
           alt: 'Kabelschade herstelwerkzaamheden',
-          caption: 'Kabelschade overzicht',
+          caption: 'Kabelschade / herstel',
         },
         {
           src: 'images/ama/kabelschade/kabelschade-02-open-sleuf-aansluitboxen.jpg',
           alt: 'Open sleuf met aansluitboxen',
-          caption: 'Open sleuf / aansluitboxen',
+          caption: 'Kabelschade / herstel',
         },
         {
           src: 'images/ama/kabelschade/kabelschade-03-detail-oranje-kabels.jpg',
           alt: 'Detail kabelschade herstel',
-          caption: 'Detail oranje kabels',
+          caption: 'Kabelschade / herstel',
         },
       ],
     },

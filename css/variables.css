@@ -1,13 +1,17 @@
 :root {
-  --paper: #F7F9FB;
-  --white: #FFFFFF;
-  --ink: #07111F;
+  --ink: #06111F;
   --navy: #071A2F;
   --blue: #1677FF;
-  --blue-soft: #E8F1FF;
+  --cyan: #13C8FF;
+  --teal: #00A99D;
+  --sky-soft: #EAF6FF;
+  --mint-soft: #EAFBF8;
+  --paper: #F6F9FC;
+  --warm: #FFFDFC;
+  --white: #FFFFFF;
   --steel: #5F6B7A;
-  --line: rgba(7, 17, 31, 0.10);
-  --line-strong: rgba(7, 17, 31, 0.16);
+  --line: rgba(7, 26, 47, 0.12);
+  --line-strong: rgba(7, 26, 47, 0.18);
 
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -27,10 +31,12 @@
   --header-h: 3.625rem;
 
   --section-pad-mobile: 3.5rem;
-  --section-pad-desktop: 5.5rem;
+  --section-pad-desktop: 5.25rem;
 
   --transition: 220ms ease;
   --transition-fade: 280ms ease;
   --shadow-soft: 0 10px 24px rgba(7, 26, 47, 0.12);
-  --shadow-hover: 0 14px 32px rgba(22, 119, 255, 0.18);
+  --shadow-hover: 0 14px 32px rgba(19, 200, 255, 0.16);
+  --accent-gradient: linear-gradient(90deg, var(--blue), var(--cyan));
+  --node-glow: 0 0 0 3px rgba(19, 200, 255, 0.18);
 }
