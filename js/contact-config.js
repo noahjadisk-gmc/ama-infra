@@ -6,7 +6,7 @@ var CONTACT = {
   phoneHref: 'tel:+31616663218',
   whatsappNumber: '31616663218',
   whatsappMessage:
-    'Hallo AMA Infra, ik heb hulp nodig met glasvezel of installatie. Kunt u contact met mij opnemen?',
+    'Hallo AMA Infra, ik heb een vraag over glasvezelwerk. Kunt u contact opnemen?',
   email: 'info@amainfra.nl',
   address: 'Willem Kromhoutstraat 18, 1067 RC Amsterdam',
   mapsUrl:

@@ -248,7 +248,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 36rem;
+  max-width: var(--section-text);
 }
 
 .hero__title {
@@ -257,14 +257,22 @@
   letter-spacing: -0.04em;
   line-height: 0.98;
   color: var(--navy);
-  max-width: 14ch;
+  max-width: none;
 }
 
 .hero__lead {
   margin-top: var(--space-heading-sub);
-  max-width: 38rem;
+  max-width: none;
   font-size: clamp(1.0625rem, 1.8vw, 1.3125rem);
   line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.hero__body {
+  margin-top: var(--space-md);
+  max-width: none;
+  font-size: clamp(0.96875rem, 1.5vw, 1.0625rem);
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 
@@ -273,6 +281,16 @@
   flex-wrap: wrap;
   gap: var(--space-sm);
   margin-top: var(--space-sub-cta);
+}
+
+.hero__trustline {
+  margin-top: var(--space-md);
+  max-width: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  color: var(--text-muted);
 }
 
 .hero__visual {
@@ -353,7 +371,7 @@
 
 @media (min-width: 1024px) {
   .cap-strip__inner {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
@@ -418,6 +436,7 @@
 .service-list {
   display: grid;
   gap: 0;
+  max-width: var(--section-text);
   border-top: 1px solid var(--line-strong);
 }
 
@@ -427,9 +446,13 @@
   gap: clamp(2.5rem, 5vw, 4rem);
 }
 
+.process-block__intro {
+  max-width: var(--section-text);
+}
+
 @media (min-width: 900px) {
   .process-block {
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(0, var(--section-text)) minmax(0, 1fr);
     gap: clamp(3rem, 6vw, 5rem);
     align-items: start;
   }
@@ -437,26 +460,8 @@
   .process-block__intro {
     position: sticky;
     top: calc(var(--header-h) + 2rem);
+    max-width: none;
   }
-}
-
-/* ── Trust block ── */
-.trust-block {
-  display: grid;
-  gap: clamp(2.5rem, 5vw, 4rem);
-}
-
-@media (min-width: 900px) {
-  .trust-block {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: clamp(3rem, 6vw, 5rem);
-    align-items: start;
-  }
-}
-
-.trust-block__aside {
-  display: grid;
-  gap: var(--space-xl);
 }
 
 /* ── Footer ── */
@@ -489,10 +494,9 @@
   gap: var(--space-md);
 }
 
-.footer__brand {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.footer__logo {
+  align-self: start;
+  margin-bottom: 0.125rem;
 }
 
 .footer__tagline {

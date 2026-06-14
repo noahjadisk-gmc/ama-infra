@@ -2,22 +2,22 @@ window.AMA_BENTO = {
   groups: [
     {
       label: 'Aanleg',
-      title: 'Aanlegsets en trajecten',
+      title: 'Aanleg en voorbereiding',
       copy:
-        'Voorbereidende werkzaamheden, aanlegsets en kabelrouting voor glasvezeltrajecten en aansluitpunten op locatie.',
+        'Sleufwerk, kabelrouting en voorbereidende werkzaamheden voor glasvezeltrajecten.',
       items: [
         {
           src: 'images/ama/aanleg/aanleg-01-lange-sleuf-straatwerk.jpg',
-          alt: 'Glasvezel aanlegwerk in Amsterdam',
+          alt: 'Glasvezel aanlegwerk in Noord-Holland',
           caption: 'Aanleg / straatwerk',
         },
       ],
     },
     {
-      label: 'Huisaansluiting',
-      title: 'Huisaansluitingen',
+      label: 'Installatie',
+      title: 'Aansluiting richting pand',
       copy:
-        'Invoertraject, aansluiting richting woning of pand, en controle van de verbinding na uitvoering.',
+        'Werk aan huisaansluitingen, invoertrajecten en aansluitpunten.',
       items: [
         {
           src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
@@ -35,7 +35,7 @@ window.AMA_BENTO = {
       label: 'Schade & herstel',
       title: 'Storing, schade & herstel',
       copy:
-        'Onderzoek en herstel bij kabelschade, storingen, geen signaal of beschadigde verbindingen.',
+        'Vrijleggen, controleren en herstellen bij kabelschade of verbindingsproblemen.',
       items: [
         {
           src: 'images/ama/kabelschade/kabelschade-01-overzicht-straatwerk.jpg',
@@ -51,24 +51,6 @@ window.AMA_BENTO = {
           src: 'images/ama/kabelschade/kabelschade-03-detail-oranje-kabels.jpg',
           alt: 'Detail herstel glasvezelkabels',
           caption: 'Schade / herstel',
-        },
-      ],
-    },
-    {
-      label: 'Netwerklocaties',
-      title: 'DP, POP & OAP',
-      copy:
-        'Ondersteuning bij werkzaamheden rondom distributiepunten, POP-locaties, OAP\'s en centrale glasvezelvoorzieningen.',
-      items: [
-        {
-          src: 'images/ama/installatie/installatie-01-huisaansluiting-kabelhaspel.jpg',
-          alt: 'Glasvezelwerk bij netwerklocatie',
-          caption: 'Netwerklocatie / aansluiting',
-        },
-        {
-          src: 'images/ama/kabelschade/kabelschade-02-open-sleuf-aansluitboxen.jpg',
-          alt: 'Aansluitboxen en distributie op locatie',
-          caption: 'Netwerklocatie / DP',
         },
       ],
     },

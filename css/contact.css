@@ -4,12 +4,12 @@
 }
 
 .contact-block__head {
-  max-width: 42rem;
+  max-width: var(--section-text);
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .contact-block__lead {
-  max-width: 38rem;
+  max-width: none;
 }
 
 .contact-block__grid {
@@ -95,6 +95,181 @@
   background: var(--white);
   border-color: var(--infra-green);
   box-shadow: 0 0 0 3px rgba(31, 107, 87, 0.12);
+}
+
+/* ── Custom select — Type aanvraag ── */
+.form-select {
+  position: relative;
+}
+
+.form-select__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-select__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.875rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  color: var(--ink);
+  background: var(--sand);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.form-select__trigger:hover {
+  background: color-mix(in srgb, var(--white) 45%, var(--sand));
+}
+
+.form-select__trigger:focus-visible {
+  outline: none;
+  background: var(--white);
+  border-color: var(--infra-green);
+  box-shadow: 0 0 0 3px rgba(31, 107, 87, 0.12);
+}
+
+.form-select.is-open .form-select__trigger {
+  background: var(--white);
+  border-color: var(--infra-green);
+  box-shadow: 0 0 0 3px rgba(31, 107, 87, 0.12);
+}
+
+.form-select--error .form-select__trigger,
+.form-select:has(.form-field__input--error) .form-select__trigger {
+  border-color: #c0392b;
+}
+
+.form-select--error.is-open .form-select__trigger,
+.form-select:has(.form-field__input--error).is-open .form-select__trigger {
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.12);
+}
+
+.form-select__value {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.form-select__value--placeholder {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.form-select__chevron {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--navy);
+  transition: transform var(--transition);
+}
+
+.form-select.is-open .form-select__chevron {
+  transform: rotate(180deg);
+}
+
+.form-select__list {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  background: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-hover);
+  max-height: min(16.5rem, 50vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  animation: form-select-in 180ms ease;
+}
+
+.form-select__list[hidden] {
+  display: none;
+}
+
+@keyframes form-select-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-select__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8125rem 0.875rem;
+  font-size: 0.96875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--navy);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.form-select__option:hover,
+.form-select__option.is-focused {
+  background: color-mix(in srgb, var(--mist) 65%, var(--white));
+}
+
+.form-select__option[aria-selected='true'] {
+  background: color-mix(in srgb, var(--infra-green) 14%, var(--white));
+  font-weight: 600;
+}
+
+.form-select__option-mark {
+  flex-shrink: 0;
+  width: 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--infra-green);
+  opacity: 0;
+}
+
+.form-select__option[aria-selected='true'] .form-select__option-mark {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-select__list {
+    animation: none;
+  }
+
+  .form-select__chevron {
+    transition: none;
+  }
 }
 
 .form-field__input--error,

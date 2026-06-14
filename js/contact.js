@@ -289,9 +289,239 @@
 
   /* ── Contactformulier ── */
 
+  function initCustomSelects(form) {
+    var wraps = form.querySelectorAll('[data-form-select]');
+    if (!wraps.length) return;
+
+    wraps.forEach(function (wrap) {
+      var select = wrap.querySelector('select');
+      if (!select || wrap.dataset.enhanced === 'true') return;
+
+      wrap.dataset.enhanced = 'true';
+
+      var label = form.querySelector('[for="' + select.id + '"]');
+      var labelId = label ? label.id : '';
+
+      select.classList.add('form-select__native');
+      select.tabIndex = -1;
+
+      var trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'form-select__trigger';
+      trigger.setAttribute('aria-haspopup', 'listbox');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (labelId) {
+        trigger.setAttribute('aria-labelledby', labelId + ' ' + select.id + '-value');
+      }
+
+      var valueEl = document.createElement('span');
+      valueEl.className = 'form-select__value form-select__value--placeholder';
+      valueEl.id = select.id + '-value';
+
+      var chevron = document.createElement('span');
+      chevron.className = 'form-select__chevron';
+      chevron.setAttribute('aria-hidden', 'true');
+      chevron.innerHTML =
+        '<svg width="16" height="16" viewBox="0 0 16 16" fill="none">' +
+        '<path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>';
+
+      trigger.appendChild(valueEl);
+      trigger.appendChild(chevron);
+
+      var list = document.createElement('ul');
+      list.className = 'form-select__list';
+      list.setAttribute('role', 'listbox');
+      list.id = select.id + '-listbox';
+      trigger.setAttribute('aria-controls', list.id);
+      list.hidden = true;
+
+      var options = [];
+      Array.prototype.forEach.call(select.options, function (option) {
+        if (!option.value) return;
+
+        var item = document.createElement('li');
+        item.className = 'form-select__option';
+        item.setAttribute('role', 'option');
+        item.setAttribute('data-value', option.value);
+        item.setAttribute('aria-selected', option.selected ? 'true' : 'false');
+        item.tabIndex = -1;
+        item.innerHTML =
+          '<span class="form-select__option-text">' +
+          option.textContent +
+          '</span>' +
+          '<span class="form-select__option-mark" aria-hidden="true">✓</span>';
+        list.appendChild(item);
+        options.push(item);
+      });
+
+      wrap.appendChild(trigger);
+      wrap.appendChild(list);
+
+      var focusedIndex = -1;
+
+      function getPlaceholder() {
+        var first = select.options[0];
+        return first && !first.value ? first.textContent : 'Kies een optie';
+      }
+
+      function syncFromSelect() {
+        var selected = select.options[select.selectedIndex];
+        var hasValue = selected && selected.value;
+
+        valueEl.textContent = hasValue ? selected.textContent : getPlaceholder();
+        valueEl.classList.toggle('form-select__value--placeholder', !hasValue);
+
+        options.forEach(function (item) {
+          var isSelected = item.getAttribute('data-value') === select.value;
+          item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        });
+      }
+
+      function setValue(value) {
+        select.value = value;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        syncFromSelect();
+      }
+
+      function closeList() {
+        wrap.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+        list.hidden = true;
+        focusedIndex = -1;
+        options.forEach(function (item) {
+          item.classList.remove('is-focused');
+        });
+      }
+
+      function openList() {
+        wrap.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        list.hidden = false;
+
+        var selectedIndex = options.findIndex(function (item) {
+          return item.getAttribute('aria-selected') === 'true';
+        });
+        focusedIndex = selectedIndex >= 0 ? selectedIndex : 0;
+        focusOption(focusedIndex, false);
+      }
+
+      function focusOption(index, scrollIntoView) {
+        if (!options.length) return;
+
+        focusedIndex = (index + options.length) % options.length;
+        options.forEach(function (item, i) {
+          item.classList.toggle('is-focused', i === focusedIndex);
+        });
+
+        if (scrollIntoView !== false) {
+          options[focusedIndex].scrollIntoView({ block: 'nearest' });
+        }
+      }
+
+      function chooseFocused() {
+        if (focusedIndex < 0 || !options[focusedIndex]) return;
+        setValue(options[focusedIndex].getAttribute('data-value'));
+        closeList();
+        trigger.focus();
+      }
+
+      trigger.addEventListener('click', function () {
+        if (wrap.classList.contains('is-open')) {
+          closeList();
+        } else {
+          openList();
+        }
+      });
+
+      options.forEach(function (item, index) {
+        item.addEventListener('click', function () {
+          setValue(item.getAttribute('data-value'));
+          closeList();
+          trigger.focus();
+        });
+
+        item.addEventListener('mousemove', function () {
+          focusedIndex = index;
+          options.forEach(function (opt, i) {
+            opt.classList.toggle('is-focused', i === index);
+          });
+        });
+      });
+
+      trigger.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowDown') {
+          event.preventDefault();
+          if (!wrap.classList.contains('is-open')) {
+            openList();
+            return;
+          }
+          focusOption(focusedIndex + 1);
+        }
+
+        if (event.key === 'ArrowUp') {
+          event.preventDefault();
+          if (!wrap.classList.contains('is-open')) {
+            openList();
+            return;
+          }
+          focusOption(focusedIndex - 1);
+        }
+
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          if (!wrap.classList.contains('is-open')) {
+            openList();
+            return;
+          }
+          chooseFocused();
+        }
+
+        if (event.key === 'Escape') {
+          closeList();
+        }
+      });
+
+      list.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeList();
+          trigger.focus();
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        if (!wrap.contains(event.target)) {
+          closeList();
+        }
+      });
+
+      select.addEventListener('change', function () {
+        syncFromSelect();
+
+        if (!select.value) return;
+
+        wrap.classList.remove('form-select--error');
+        select.classList.remove('form-field__input--error');
+        select.removeAttribute('aria-invalid');
+
+        var group = select.closest('.form-field');
+        if (!group) return;
+
+        var msg = group.querySelector('.form-field__error');
+        if (msg) {
+          msg.textContent = '';
+          msg.hidden = true;
+        }
+      });
+      syncFromSelect();
+    });
+  }
+
   function initContactForm() {
     var form = document.getElementById('contact-form');
     if (!form) return;
+
+    initCustomSelects(form);
 
     var successEl = document.getElementById('contact-form-success');
     var errorEl = document.getElementById('contact-form-error');
@@ -401,6 +631,11 @@
       field.setAttribute('aria-invalid', 'true');
       field.classList.add('form-field__input--error');
 
+      var selectWrap = field.closest('.form-select');
+      if (selectWrap) {
+        selectWrap.classList.add('form-select--error');
+      }
+
       var group = field.closest('.form-field');
       if (!group) return;
 
@@ -416,6 +651,10 @@
     form.querySelectorAll('.form-field__input--error').forEach(function (el) {
       el.classList.remove('form-field__input--error');
       el.removeAttribute('aria-invalid');
+    });
+
+    form.querySelectorAll('.form-select--error').forEach(function (el) {
+      el.classList.remove('form-select--error');
     });
 
     form.querySelectorAll('.form-field__error').forEach(function (el) {
