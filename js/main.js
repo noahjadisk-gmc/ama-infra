@@ -43,6 +43,68 @@
     if (window.innerWidth >= 768) closeMenu();
   });
 
+  /* Scroll met korte delay */
+  var SCROLL_DELAY_MS = 180;
+  var SCROLL_DURATION_MS = 700;
+
+  function getScrollOffset() {
+    var headerEl = document.querySelector('.site-header');
+    return (headerEl ? headerEl.offsetHeight : 88) + 16;
+  }
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function animateScrollTo(top) {
+    var start = window.scrollY;
+    var distance = top - start;
+    var startTime = null;
+
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / SCROLL_DURATION_MS, 1);
+      window.scrollTo(0, start + distance * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function scrollToTarget(target) {
+    var top = target.getBoundingClientRect().top + window.scrollY - getScrollOffset();
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) {
+      window.scrollTo(0, top);
+      return;
+    }
+
+    setTimeout(function () {
+      animateScrollTo(top);
+    }, SCROLL_DELAY_MS);
+  }
+
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+
+    var hash = link.getAttribute('href');
+    if (!hash || hash === '#') return;
+
+    var target = document.querySelector(hash);
+    if (!target) return;
+
+    event.preventDefault();
+    scrollToTarget(target);
+
+    if (history.replaceState) {
+      history.replaceState(null, '', hash);
+    } else {
+      location.hash = hash;
+    }
+  });
+
   /* Actieve sectie in navigatie */
   var sectionEls = Array.prototype.slice.call(
     document.querySelectorAll('main section[id], main .hero')

@@ -4,6 +4,8 @@
   --deep-green: #123A32;
   --infra-green: #1F6B57;
   --signal-orange: #F26A21;
+  --whatsapp-green: #25D366;
+  --whatsapp-green-hover: #1fb855;
   --sand: #F4F1EA;
   --mist: #DDE6E1;
   --mist: color-mix(in srgb, var(--deep-green) 14%, var(--sand));
