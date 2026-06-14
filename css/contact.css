@@ -15,7 +15,7 @@
 .contact-block__grid {
   display: grid;
   gap: clamp(2rem, 4vw, 3.5rem);
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 960px) {
@@ -26,11 +26,24 @@
 }
 
 .contact-form-panel {
+  display: flex;
+  flex-direction: column;
   padding: clamp(1.75rem, 3vw, 2.5rem);
   background: var(--surface-raised);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
+}
+
+.contact-form-panel > .form-message {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .form-grid {
@@ -318,6 +331,7 @@
   color: #7b241c;
   background: rgba(192, 57, 43, 0.08);
   border: 1px solid rgba(192, 57, 43, 0.18);
+  grid-column: 1 / -1;
 }
 
 .form-message--success {
@@ -348,6 +362,9 @@
 /* ── Contact aside ── */
 .contact-aside {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: clamp(1.75rem, 3vw, 2.5rem);
   background: var(--deep-green);
   color: var(--white);
@@ -486,6 +503,7 @@
 .contact-aside__details {
   display: grid;
   gap: var(--space-md);
+  margin-top: auto;
   padding-top: var(--space-lg);
   border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-style: normal;

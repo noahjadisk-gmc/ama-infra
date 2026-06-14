@@ -153,6 +153,10 @@ ol {
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
+#werkwijze .section__title {
+  max-width: 12ch;
+}
+
 .skip-link {
   position: absolute;
   top: 0.75rem;
